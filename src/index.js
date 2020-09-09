@@ -2,8 +2,8 @@ import "./styles/main.css";
 // alert("connected js");
 import { breweryAPIKey } from "./config/keys_dev";
 import * as d3 from "d3";
-const ABV_MAX = 10;
-const IBU_MAX = 100;
+const ABV_MAX_Y = 10;
+const IBU_MAX_Y = 100;
 const IBU = 'ibu';
 const ABV = 'abv';
 const TOOLTIP_HEIGHT_OFFSET = 60;
@@ -211,7 +211,8 @@ const beers = [
 
 document.addEventListener("DOMContentLoaded", () => {
     // setBeerBarIbu();
-    setBeerBarAbv();
+    // setBeerBarAbv();
+    setBeerBar(beerAttrs.ibu);
 
 //   showBars();
 
@@ -229,7 +230,131 @@ document.addEventListener("DOMContentLoaded", () => {
   // re-fetch all the beers? (bad idea)
   // 
 });
+const beerAttrs = {
+    abv: {
+        yMax: ABV_MAX_Y,
+        yTitle: 'ABV (%)',
+        graphTitle: 'ABV of Different Beers',
+        beerValue: ABV,
+        beerValueSymbol: '\%'
+    },
+    ibu: {
+        yMax: IBU_MAX_Y,
+        yTitle: 'IBUs',
+        graphTitle: 'IBUs of Different Beers',
+        beerValue: IBU,
+        beerValueSymbol: ' IBUs'
+    }
+};
 
+const setBeerBar = (attrs) => {
+    // Bar setup
+    const margin = 60;
+    const width = 600 - 2 * margin;
+    const height = 450 - 2 * margin;
+    const beerSvg = d3
+        .select("#beer-bar")
+        .attr("height", width + margin * 2)
+        .attr("width", width + margin * 2);
+    const barChart = beerSvg.append('g')
+        .attr('transform', `translate(${margin}, ${margin})`);
+
+
+    // Y-axis scale 
+    const yScale = d3.scaleLinear()
+        .range([height, 0])
+        .domain([0, attrs.yMax]);
+    barChart.append('g')
+        .call(d3.axisLeft(yScale));
+    
+    // x-axis scale for beer names
+    const xScale = d3.scaleBand()
+        .range([0, width])
+        .domain(beers.map((beer) => beer.name))
+        .padding(0.2);
+    barChart.append('g')
+        .attr('transform', `translate(0, ${height})`)
+        .call(d3.axisBottom(xScale));
+
+    // horizontal lines across graph
+    barChart
+        .append("g")
+        .attr("class", "grid")
+        .call(
+            d3.axisLeft().scale(yScale).tickSize(-width, 0, 0).tickFormat("")
+        );
+
+    // Tooltip to follow cursor on hover
+    const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("position", "absolute")
+            .style("opacity", 0);
+
+    
+    // y-axis label
+    beerSvg.append('text')
+            .attr('x', -(height / 2) - margin)
+            .attr('y', margin / 2.4)
+            .attr('transform', 'rotate(-90)')
+            .attr('text-anchor', 'middle')
+            .text(attrs.yTitle);
+
+    // x-axis label
+    beerSvg
+        .append("text")
+            .attr("x", width / 2 + margin)
+            .attr("y", height + 100)
+            .attr("text-anchor", "middle")
+            .text("Beer Names");
+
+    
+    // Title of graph
+    beerSvg
+        .append("text")
+        .attr("x", width / 2 + margin)
+        .attr("y", margin / 2)
+        .attr("text-anchor", "middle")
+        .text(attrs.graphTitle);
+
+    barChart.selectAll()
+        .data(beers)
+        .enter()
+        .append('rect')
+            .attr('x', (beer) => xScale(beer.name))
+            .attr('y', (beer) => {
+                const beerValue = getBeerValue(beer, attrs.beerValue);
+                return yScale(beerValue);
+            })
+            .attr('height', (beer) => {
+                const beerValue = getBeerValue(beer, attrs.beerValue);
+                return height - yScale(beerValue);
+            })
+            .attr('width', xScale.bandwidth())
+            .on('mouseover', function(d3event, beer) {
+                tooltip.style('opacity', .9);
+                const ttX = d3event.pageX + "px";
+                const ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
+
+                tooltip.html(beer.name + "<br/>" 
+                  + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
+                    .style("left", ttX)
+                    .style("top", ttY)
+            })
+            .on('mousemove', function(d3event, beer) {
+                tooltip.html(beer.name + "<br/>" 
+                  + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
+                    .style("left", d3event.pageX + "px")
+                    .style("top", d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px");
+            })
+            .on('mouseenter', function () {
+                d3.select(this).attr('opacity', 0.8)
+            })
+            .on('mouseleave', function () {
+                d3.select(this).attr('opacity',  1);
+                tooltip.style("opacity", 0);
+            })
+
+};
 
 const setBeerBarAbv = () => {
     const margin = 60;
