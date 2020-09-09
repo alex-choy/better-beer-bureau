@@ -6,6 +6,7 @@ const ABV_MAX = 10;
 const IBU_MAX = 100;
 const IBU = 'ibu';
 const ABV = 'abv';
+const TOOLTIP_HEIGHT_OFFSET = 60;
 
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
 
@@ -232,11 +233,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const setBeerBarAbv = () => {
     const margin = 60;
-    const width = 1000 - (2 * margin);
-    const height = 600 - (2 * margin);   
+    const width = 600 - (2 * margin);
+    const height = 450 - (2 * margin);   
     const beerSvg = d3.select("#beer-bar")
         .attr('height', width + margin * 2)
-        .attr('width', width);
+        .attr('width', width + margin * 2);
 
     // Clear out previous bars
     beerSvg.selectAll("*").remove();
@@ -286,7 +287,7 @@ const setBeerBarAbv = () => {
     beerSvg
         .append("text")
             .attr("x", width / 2 + margin)
-            .attr("y", height * 1.25)
+            .attr("y", height + 100)
             .attr("text-anchor", "middle")
             .text("Beer Names");
 
@@ -314,16 +315,9 @@ const setBeerBarAbv = () => {
             })
             .attr('width', xScale.bandwidth())
             .on('mouseover', function(d3event, beer) {
-                tooltip
-                    .style('opacity', .9);
-                const rect = d3.select(this);
-                const halfWidth = parseFloat(rect.attr("width")) / 2
-                const height = parseFloat(rect.attr("height"));
-                // const ttX = (parseFloat(rect.attr('x')) + halfWidth) + 'px';
-                // const ttY = (parseFloat(rect.attr('y')) + height / 4)  + 'px';
-
+                tooltip.style('opacity', .9);
                 const ttX = d3event.pageX + "px";
-                const ttY = d3event.pageY - 60 + "px";
+                const ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
 
                 tooltip.html(beer.name + "<br/>" + getBeerValue(beer, ABV))
                     .style("left", ttX)
@@ -332,12 +326,12 @@ const setBeerBarAbv = () => {
             .on('mousemove', function(d3event, beer) {
                 tooltip.html(beer.name + "<br/>" + getBeerValue(beer, ABV))
                     .style("left", d3event.pageX + "px")
-                    .style("top", d3event.pageY - 60 + "px");
+                    .style("top", d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px");
             })
-            .on('mouseenter', function (actual, i) {
+            .on('mouseenter', function () {
                 d3.select(this).attr('opacity', 0.8)
             })
-            .on('mouseleave', function (actual, i) {
+            .on('mouseleave', function () {
                 d3.select(this).attr('opacity',  1);
                 tooltip.style("opacity", 0);
             })
@@ -430,7 +424,8 @@ const setBeerBarIbu = () => {
  * If not, we can find the min and max within beer.style
  * 
  * @param {object} beer 
- * @param {string} field 
+ * @param {string} field
+ *      values like 'ibu', 'abv', 'srm'
  */
 const getBeerValue = (beer, field) => {
     if(beer[field]) {
