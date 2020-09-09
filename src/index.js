@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const showBars = () => {
-        const margins = {top: 10, right: 40, bot: 30, left: 40},
+        const margins = {top: 10, right: 10, bot: 30, left: 40},
         width = 400 - margins.left - margins.right,
         height = 450 - margins.top - margins.bot;
         
@@ -85,10 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
             .attr("height", height)
             .append("g")
                 .attr("transform",
-                    "translate(" + margins.left + "," + margins.top + ")");
+                    "translate(" + margins.left + "," + -margins.bot + ")");
 
         d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv", function(data) {
-            console.log('data', typeof data);
+            // console.log('data', typeof data);
+            for(let i = 0; i < data.length; i++) {
+                console.log(data[i]);
+            }
             const xScale = d3.scaleBand()
                 .domain(data.Country)
                 .range([0, width])
@@ -97,21 +100,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.axisBottom(xScale))
                 .selectAll("text")
-                    .attr("transform", "translate(-10, 0)rotate(-45)")
+                    .attr("transform", "translate(-30, 0)rotate(-45)")
                     .style("text-anchor", "end");
 
             const yScale = d3.scaleLinear()
-                .domain([height, 0])
-                .range([0, 13000]);
+                .domain([0, 13000])
+                .range([height, 0]);
             bars.append("g")
                 .call(d3.axisLeft(yScale));
 
             bars.selectAll("mybar")
                 .data(data)
-                .attr("x", (d) => xScale(d.Country))
-                .attr("y", (d) => yScale(d.Value))
+                .attr("x", xScale(data.Country))
+                .attr("y", yScale(data.Value))
                 .attr("width", xScale.bandwidth())
-                .attr("height", (d) => height - yScale(d.Value))
+                .attr("height", height - yScale(data.Value))
                 .attr("fill", "69b3a2");
         })
     };
