@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 module.exports = {
     mode: "none",
     entry: "./src/index.js",
@@ -33,4 +34,9 @@ module.exports = {
     resolve: {
         extensions: [".js", ".jsx", "*"],
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            d3: 'd3'
+        })
+    ]
 };
