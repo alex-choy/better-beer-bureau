@@ -10,9 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `${proxyurl}https://sandbox-api.brewerydb.com/v2/beer/c4f2KE/?key=${breweryAPIKey}`
     );
     req.onload = () => {
-        console.log(JSON.parse(req.response));
+        console.log(JSON.parse(req.response).data);
     }
     const res = req.send();
-
-    
 })
