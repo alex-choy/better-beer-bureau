@@ -5,7 +5,8 @@ import * as d3 from "d3";
 import { transition } from "d3";
 import { BEER_ATTRS } from './beerAttrs';
 import { beers } from './beers';
-const TOOLTIP_HEIGHT_OFFSET = 75;
+const TOOLTIP_HEIGHT_OFFSET = 70;
+const TOOLTIP_WIDTH_OFFSET = 10;
 const UPDATE_TRANSITION_TIME = 1000;
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
 
@@ -77,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .append("text")
         .attr("x", width / 2)
         .attr("y", -20)
+        .attr("class", "graph-title")
         .attr("text-anchor", "middle")
         .text('ABV of Different Beers');
 
@@ -100,9 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
         graphTitle.text(attrs.graphTitle);
 
         // Update Horizontal lines
-        horizLines.call(
-          d3.axisLeft(yScale).tickSize(-width).tickFormat("")
-        );
+        horizLines.transition().duration(UPDATE_TRANSITION_TIME)
+            .call(
+                d3.axisLeft(yScale).tickSize(-width).tickFormat("")
+            );
 
         // Create the bars
         const bars = beerSvg.selectAll("rect").data(beers);
@@ -128,7 +131,7 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
     function _onMouseOverEvent(d3event, beer) {
         d3.select(this).transition('mouseover').duration(250).attr("opacity", 0.7);
         tooltip.style('opacity', .9);
-        const ttX = d3event.pageX + "px";
+        const ttX = d3event.pageX + TOOLTIP_WIDTH_OFFSET + "px";
         const ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
         console.log(newAttrs.beerValue);
         tooltip.html(beer.name + "<br/>" 
@@ -137,10 +140,11 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
             .style("top", ttY)
     };
     
-    const _onMouseMoveEvent = (d3event, beer) => {
-        tooltip.html(beer.name + "<br/>" 
+    function _onMouseMoveEvent(d3event, beer) {
+        const prefix = newAttrs.beerPrefix || "";
+        tooltip.html(beer.name + "<br/>" + prefix 
             + getBeerValue(beer, newAttrs.beerValue) + newAttrs.beerValueSymbol)
-            .style("left", d3event.pageX + "px")
+            .style("left", d3event.pageX + TOOLTIP_WIDTH_OFFSET + "px")
             .style("top", d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px");
     };
     
