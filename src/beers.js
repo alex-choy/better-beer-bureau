@@ -11,18 +11,11 @@ const alphabeticalBeers = (a, b) => {
 }
 
 export const deleteBeer = (beerId) => {
-    console.log(unsortedBeers);
-    const newBeers = unsortedBeers.map((beer, idx) => {
-        if(beer.id !== beerId) {
-            return beer;
-        }
-    });
-    beers = newBeers;
-    unsortedBeers = newBeers;
+    delete unsortedBeers[beerId];
 };
 
-const unsortedBeers = [
-  {
+const unsortedBeers = {
+  "zfP2fK": {
     id: "zfP2fK",
     name: "12th Of Never",
     nameDisplay: "12th Of Never",
@@ -85,7 +78,7 @@ const unsortedBeers = [
       updateDate: "2015-04-07 15:25:18",
     },
   },
-  {
+  "zTTWa2": {
     id: "zTTWa2",
     name: "11.5° PLATO",
     nameDisplay: "11.5° PLATO",
@@ -116,7 +109,7 @@ const unsortedBeers = [
       createDate: "2015-04-07 17:07:27",
     },
   },
-  {
+  "xwYSL2": {
     id: "xwYSL2",
     name: "15th Anniversary Ale",
     nameDisplay: "15th Anniversary Ale",
@@ -154,7 +147,7 @@ const unsortedBeers = [
       updateDate: "2015-04-07 15:19:20",
     },
   },
-  {
+  "c4f2KE": {
     id: "c4f2KE",
     name: "'Murican Pilsner",
     nameDisplay: "'MuricanPilsner",
@@ -207,7 +200,7 @@ const unsortedBeers = [
       updateDate: "2015-04-07 15:40:08",
     },
   },
-  {
+  "vz5JZ1": {
     id: "vz5JZ1",
     name: "1794 The Fergal Project",
     nameDisplay: "1794 The Fergal Project",
@@ -244,6 +237,6 @@ const unsortedBeers = [
       updateDate: "2015-04-07 15:28:43",
     },
   },
-];
+};
 
-export const beers = unsortedBeers.sort(alphabeticalBeers);
+export const beers = Object.values(unsortedBeers).sort(alphabeticalBeers);
