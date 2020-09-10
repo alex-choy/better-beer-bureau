@@ -4,13 +4,15 @@ import * as d3 from "d3";
 import { transition } from "d3";
 import { BEER_ATTRS } from './beerAttrs';
 import { beers } from './beers';
-const TOOLTIP_HEIGHT_OFFSET = 65;
+const TOOLTIP_HEIGHT_OFFSET = 70;
+const TOOLTIP_WIDTH_OFFSET = 10;
 const UPDATE_TRANSITION_TIME = 1000;
+const X_LABEL_HEIGHT_OFFSET = 120; 
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { 
     const margin = 60;
     const width = 600 - 2 * margin;
     const height = 450 - 2 * margin;
@@ -62,14 +64,16 @@ document.addEventListener("DOMContentLoaded", () => {
         .attr('y', -margin / 2)
         .attr('transform', 'rotate(-90)')
         .attr('text-anchor', 'middle')
+        .attr("class", "axis-label")
         .text('ABVs');
 
     // x-axis label
     const xLabel = beerSvg
         .append("text")
             .attr("x", width / 2)
-            .attr("y", height + 125)
+            .attr("y", height + X_LABEL_HEIGHT_OFFSET)
             .attr("text-anchor", "middle")
+            .attr("class", "axis-label")
             .text("Beer Names");
     
     // Title of graph
@@ -77,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .append("text")
         .attr("x", width / 2)
         .attr("y", -20)
+        .attr("class", "graph-title")
         .attr("text-anchor", "middle")
         .attr("class", "graph-title")
         .text('ABV of Different Beers');
@@ -88,11 +93,11 @@ document.addEventListener("DOMContentLoaded", () => {
      *      e.g. updateBeerBarChart(BEER_ATTRS.abv) 
      */
     function updateBeerBarChart(attrs) {
-        // Update x-axis
         xScale.domain(beers.map((beer) => beer.name)).padding(0.2);
         xAxis.call(d3.axisBottom(xScale))
             .selectAll("text")
                 .style("text-anchor", "end")
+                .attr("class", "x-axis-value")
                 .attr("dx", "-10px")
                 .attr('transform', () => "rotate(-30)")
 
@@ -129,21 +134,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // 
 });
 
-const addBars = (bars, attrs, xScale, yScale, height, tooltip) => {
-    // console.log(attrs);
+const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
     function _onMouseOverEvent(d3event, beer) {
-        d3.select(this).transition("mouseover").duration(250).attr("opacity", 0.8);
-        tooltip.style('opacity', .95);
-        setToolTip(tooltip, beer, d3event);
+        d3.select(this).transition('mouseover').duration(250).attr("opacity", 0.7);
+        tooltip.style('opacity', .9);
+        const ttX = d3event.pageX + TOOLTIP_WIDTH_OFFSET + "px";
+        const ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
+        console.log(newAttrs.beerValue);
+        tooltip.html(beer.name + "<br/>" 
+            + getBeerValue(beer, newAttrs.beerValue) + newAttrs.beerValueSymbol)
+            .style("left", ttX)
+            .style("top", ttY)
     };
     
-    const _onMouseMoveEvent = (d3event, beer) => {
-        console.log(beer);
-        return setToolTip(d3event, beer);
+    function _onMouseMoveEvent(d3event, beer) {
+        const prefix = newAttrs.beerPrefix || "";
+        tooltip.html(beer.name + "<br/>" + prefix 
+            + getBeerValue(beer, newAttrs.beerValue) + newAttrs.beerValueSymbol)
+            .style("left", d3event.pageX + TOOLTIP_WIDTH_OFFSET + "px")
+            .style("top", d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px");
     };
     
     function _onMouseLeaveEvent(d3event, beer) {
-        d3.select(this).transition("mouseleave").duration(300).attr("opacity", 1);
+        d3.select(this).transition('mouseleave').duration(300).attr("opacity", 1);
         tooltip.style("opacity", 0);
     }
 
@@ -177,6 +190,20 @@ const addBars = (bars, attrs, xScale, yScale, height, tooltip) => {
             // Stops flickering on first hover
             .attr("opacity", 0)
             .attr("opacity", 1);
+};
+
+const initDropdownList = (updateBeerBarChart) => {
+  const beerDrpdwn = document.getElementById("beer-drpdwn");
+  for (const beerAttr in BEER_ATTRS) {
+    const option = document.createElement("option");
+    option.value = beerAttr;
+    option.text = BEER_ATTRS[beerAttr].yTitle;
+    beerDrpdwn.appendChild(option);
+  }
+  beerDrpdwn.addEventListener("change", function (value) {
+    const beerValue = this.options[this.selectedIndex].value;
+    updateBeerBarChart(BEER_ATTRS[beerValue]);
+  });
 };
 
 const initDropdownList = (updateBeerBarChart) => {
