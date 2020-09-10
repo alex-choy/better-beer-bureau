@@ -116,6 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         bars.enter()
             .append("rect")
+            // Tooltip to show up, and dims the hovered bar
+            .on('mouseover', _onMouseOverEvent)
+            .on('mousemove', _onMouseMoveEvent)
+            .on('mouseleave', _onMouseLeaveEvent)
             .merge(bars)
             .transition()
             .duration(1000)
@@ -132,14 +136,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 .attr("fill", "#69b3a2")            // get rid of the flickering if we left out these 2 lines
                 .attr("opacity", 0)
                 .attr("opacity", 1)
-            // Tooltip to show up, and dims the hovered bar
-            // .on('mouseover', onMouseOverEvent)
-            // .on('mousemove', onMouseMoveEvent)
-            // .on('mouseleave', onMouseLeaveEvent)
 
 
         bars.exit()
             .remove();
+
+        function _onMouseOverEvent(d3event, beer) {
+            d3.select(this).transition().duration(250).attr("opacity", 0.7);
+            tooltip.style('opacity', .9);
+            const ttX = d3event.pageX + "px";
+            const ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
+        
+            tooltip.html(beer.name + "<br/>" 
+                + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
+                .style("left", ttX)
+                .style("top", ttY)
+        };
+        
+        function _onMouseMoveEvent(d3event, beer) {
+            tooltip.html(beer.name + "<br/>" 
+                + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
+                .style("left", d3event.pageX + "px")
+                .style("top", d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px");
+        };
+        
+        function _onMouseLeaveEvent(d3event, beer) {
+            d3.select(this).transition().duration(300).attr("opacity", 1);
+            tooltip.style("opacity", 0);
+    }
     }
     updateBeerBarChart(BEER_ATTRS.abv);
   // category: style.category.name||id
@@ -152,29 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // append on to the current list?
   // re-fetch all the beers? (bad idea)
   // 
-    function onMouseOverEvent(d3event, beer) {
-        d3.select(this).transition().duration(250).attr("opacity", 0.7);
-        tooltip.style('opacity', .9);
-        const ttX = d3event.pageX + "px";
-        const ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
     
-        tooltip.html(beer.name + "<br/>" 
-            + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
-            .style("left", ttX)
-            .style("top", ttY)
-    };
-    
-    function onMouseMoveEvent(d3event, beer) {
-        tooltip.html(beer.name + "<br/>" 
-            + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
-            .style("left", d3event.pageX + "px")
-            .style("top", d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px");
-    };
-    
-    function onMouseLeaveEvent(d3event, beer) {
-        d3.select(this).transition().duration(300).attr("opacity", 1);
-        tooltip.style("opacity", 0);
-    }
 });
 
 
