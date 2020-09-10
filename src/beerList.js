@@ -1,13 +1,13 @@
-import { beers, deleteBeer } from './beers';
+import * as Beer from './beers';
 const deleteBeerFromList = (beerId) => {
     const beer = document.getElementById(beerId);
     beer.parentNode.removeChild(beer);
-    deleteBeer(beerId);
+    Beer.deleteBeer(beerId);
 }
 
-export const initBeerList = () => {
+export const initBeerList = (updateBeerBarChart) => {
     const beerList = document.getElementById("beer-list");
-    beers.forEach((beer) => {
+    Beer.beers.forEach((beer) => {
         const beerEle = document.createElement("li");
         beerEle.innerHTML = beer.name;
         beerEle.className = "beer-item";
@@ -16,7 +16,9 @@ export const initBeerList = () => {
         // Add delete icon to remove beer from list
         const deleteEle = document.createElement("i");
         deleteEle.className = "fas fa-minus-circle";
-        deleteEle.addEventListener('click', () => deleteBeerFromList(beerEle.id));
+        deleteEle.addEventListener("click", () => {
+          deleteBeerFromList(beerEle.id);
+        });
 
         beerEle.appendChild(deleteEle);
 

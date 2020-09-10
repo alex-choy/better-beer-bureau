@@ -10,6 +10,7 @@ const TOOLTIP_HEIGHT_OFFSET = 70;
 const TOOLTIP_WIDTH_OFFSET = 10;
 const UPDATE_TRANSITION_TIME = 1000;
 const X_LABEL_HEIGHT_OFFSET = 120; 
+let prevAttrs = 'abv';
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
 
 /**
@@ -92,7 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
      *      Pass in an object from BEER_ATTRS to update the data
      *      e.g. updateBeerBarChart(BEER_ATTRS.abv) 
      */
-    const updateBeerBarChart = (attrs) => {
+    const updateBeerBarChart = (attrs = prevAttrs) => {
+        prevAttrs = attrs;
+        
         xScale.domain(beers.map((beer) => beer.name)).padding(0.2);
         xAxis.call(d3.axisBottom(xScale))
             .selectAll("text")
@@ -142,7 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
 const initialize = (updateBeerBarChart) => {
     initDropdownList(updateBeerBarChart);
     updateBeerBarChart(BEER_ATTRS.abv);
-    initBeerList(beers)
+    initBeerList(updateBeerBarChart);
+    d3.selectAll(".fa-minus-circle")
+        .on('click', () => {
+            return updateBeerBarChart();
+        });
 }
 
 /**
