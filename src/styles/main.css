@@ -1,0 +1,23 @@
+.beer-info {
+    display: flex;
+}
+
+.graph {
+    margin: auto;
+    padding-left: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#beer-drpdwn {
+    width: 20%;
+    padding: 5px 10px;
+    position: relative;
+    left: -13%;
+}
+
+.graph-title {
+    font-size: 28px;
+    font-weight: 700;
+}
