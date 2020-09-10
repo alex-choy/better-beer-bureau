@@ -1,5 +1,4 @@
 import "./styles/main.css";
-// alert("connected js");
 import { breweryAPIKey } from "./config/keys_dev";
 import * as d3 from "d3";
 import { transition } from "d3";
@@ -131,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const addBars = (bars, attrs, xScale, yScale, height, tooltip) => {
+    // console.log(attrs);
     function _onMouseOverEvent(d3event, beer) {
         d3.select(this).transition("mouseover").duration(250).attr("opacity", 0.8);
         tooltip.style('opacity', .95);
@@ -138,7 +138,8 @@ const addBars = (bars, attrs, xScale, yScale, height, tooltip) => {
     };
     
     const _onMouseMoveEvent = (d3event, beer) => {
-        setToolTip(beer, d3event);
+        console.log(beer);
+        return setToolTip(d3event, beer);
     };
     
     function _onMouseLeaveEvent(d3event, beer) {
@@ -146,7 +147,7 @@ const addBars = (bars, attrs, xScale, yScale, height, tooltip) => {
         tooltip.style("opacity", 0);
     }
 
-    const setToolTip = (beer, d3event) => {
+    function setToolTip(d3event, beer) {
         tooltip.html(beer.name + "<br/>" + attrs.prefix 
             + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
             .style("left", d3event.pageX  + 15 + "px")
