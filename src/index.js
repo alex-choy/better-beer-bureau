@@ -4,7 +4,6 @@ import { breweryAPIKey } from "./config/keys_dev";
 import * as d3 from "d3";
 import { transition } from "d3";
 import { BEER_ATTRS } from './beerAttrs';
-import { beers } from './beers';
 import { initBeerList } from "./beerList";
 const TOOLTIP_HEIGHT_OFFSET = 70;
 const TOOLTIP_WIDTH_OFFSET = 10;
@@ -26,6 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
         .attr("width", width + margin * 2)
         .append('g')
             .attr('transform', `translate(${margin}, ${margin})`)
+
+    // initial beers
+    const beers = Object.values(require("./beers.json")).sort(alphabeticalBeers);
 
     // Y-axis scale 
     const yScale = d3.scaleLinear()
@@ -94,6 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
      *      e.g. updateBeerBarChart(BEER_ATTRS.abv) 
      */
     const updateBeerBarChart = (attrs = prevAttrs) => {
+        const beers = Object.values(require("./beers.json")).sort(
+            alphabeticalBeers
+        );
         prevAttrs = attrs;
         
         xScale.domain(beers.map((beer) => beer.name)).padding(0.2);
@@ -186,7 +191,6 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
         tooltip.style("opacity", 0)
             .style("left", d3.screenX)
             .style("top", d3.screenY);
-        console.log(d3event);
     }
 
     bars.enter()
@@ -249,3 +253,19 @@ const getBeerValue = (beer, field) => {
         return (maxVal + minVal) / 2 || 0;
     }
 }
+
+/**
+ * Sort beers by name
+ * @param {beer object} a 
+ * @param {beer object} b 
+ */
+const alphabeticalBeers = (a, b) => {
+    const aName = a.name.replace(/^[^a-z\d]*|[^a-z\d]*$/gi, "").toUpperCase();
+    const bName = b.name.replace(/^[^a-z\d]*|[^a-z\d]*$/gi, "").toUpperCase();
+    if (aName < bName) {
+        return -1;
+    } else if (aName > bName) {
+        return 1;
+    }
+    return 0;
+};
