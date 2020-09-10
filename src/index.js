@@ -6,7 +6,7 @@ import { transition } from "d3";
 import { BEER_ATTRS } from './beerAttrs';
 import { beers } from './beers';
 const TOOLTIP_HEIGHT_OFFSET = 60;
-
+const UPDATE_TRANSITION_TIME = 1000;
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
 
 
@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .select("#beer-bar")
         .attr("height", width + margin * 2)
         .attr("width", width + margin * 2)
-    // const barChart = beerDiv.append('g')
         .append('g')
             .attr('transform', `translate(${margin}, ${margin})`)
 
@@ -100,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Update y-axis
         yScale.domain([0, attrs.yMax]);
-        yAxis.transition().duration(1000).call(d3.axisLeft(yScale));
+        yAxis.transition().duration(UPDATE_TRANSITION_TIME).call(d3.axisLeft(yScale));
 
         // Update titles
         yLabel.text(attrs.yTitle);
@@ -113,57 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Create the bars
         const bars = beerSvg.selectAll("rect").data(beers);
+        addBars(bars, attrs, xScale, yScale, height, tooltip);
 
-        bars.enter()
-            .append("rect")
-            // Tooltip to show up, and dims the hovered bar
-            .on('mouseover', _onMouseOverEvent)
-            .on('mousemove', _onMouseMoveEvent)
-            .on('mouseleave', _onMouseLeaveEvent)
-            .merge(bars)
-            .transition()
-            .duration(1000)
-                .attr("x", beer => xScale(beer.name))
-                .attr("y", beer => {
-                    const beerValue = getBeerValue(beer, attrs.beerValue);
-                    return yScale(beerValue);
-                })
-                .attr("height", beer => {
-                    const beerValue = getBeerValue(beer, attrs.beerValue);
-                    return height - yScale(beerValue);
-                })
-                .attr("width", xScale.bandwidth())
-                .attr("fill", "#69b3a2")            // get rid of the flickering if we left out these 2 lines
-                .attr("opacity", 0)
-                .attr("opacity", 1)
-
-
-        bars.exit()
-            .remove();
-
-        function _onMouseOverEvent(d3event, beer) {
-            d3.select(this).transition().duration(250).attr("opacity", 0.7);
-            tooltip.style('opacity', .9);
-            const ttX = d3event.pageX + "px";
-            const ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
-        
-            tooltip.html(beer.name + "<br/>" 
-                + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
-                .style("left", ttX)
-                .style("top", ttY)
-        };
-        
-        function _onMouseMoveEvent(d3event, beer) {
-            tooltip.html(beer.name + "<br/>" 
-                + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
-                .style("left", d3event.pageX + "px")
-                .style("top", d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px");
-        };
-        
-        function _onMouseLeaveEvent(d3event, beer) {
-            d3.select(this).transition().duration(300).attr("opacity", 1);
-            tooltip.style("opacity", 0);
-    }
+        bars.exit().remove();
     }
     updateBeerBarChart(BEER_ATTRS.abv);
   // category: style.category.name||id
@@ -176,133 +127,58 @@ document.addEventListener("DOMContentLoaded", () => {
   // append on to the current list?
   // re-fetch all the beers? (bad idea)
   // 
-    
 });
 
-
-/**
- * Makes the beer bar chart modular
- * Pass in one of these keys to setBeerBar() to display values
- * e.g. setBeerBar(abv) to show ABV values
- */
-
-const setBeerBar = (attrs) => {
-    // Bar setup
-    const margin = 60;
-    const width = 600 - 2 * margin;
-    const height = 450 - 2 * margin;
-    const beerSvg = d3
-        .select("#beer-bar")
-        .attr("height", width + margin * 2)
-        .attr("width", width + margin * 2);
-    const barChart = beerSvg.append('g')
-        .attr('transform', `translate(${margin}, ${margin})`);
-
-
-    // Y-axis scale 
-    const yScale = d3.scaleLinear()
-        .range([height, 0])
-        .domain([0, attrs.yMax]);
-    barChart.append('g')
-        .call(d3.axisLeft(yScale));
-    
-    // x-axis scale for beer names
-    const xScale = d3.scaleBand()
-        .range([0, width])
-        .domain(beers.map((beer) => beer.name))
-        .padding(0.2);
-    barChart.append('g')
-        .attr('transform', `translate(0, ${height})`)
-        .call(d3.axisBottom(xScale));
-
-    // horizontal lines across graph
-    barChart
-        .append("g")
-        .attr("class", "grid")
-        .call(
-            d3.axisLeft().scale(yScale).tickSize(-width, 0, 0).tickFormat("")
-        );
-
-    // Tooltip to follow cursor on hover
-    const tooltip = d3.select("body").append("div")
-            .attr("class", "tooltip")
-            .style("position", "absolute")
-            .style("opacity", 0);
-
-    
-    // y-axis label
-    beerSvg.append('text')
-            .attr('x', -(height / 2) - margin)
-            .attr('y', margin / 2.4)
-            .attr('transform', 'rotate(-90)')
-            .attr('text-anchor', 'middle')
-            .text(attrs.yTitle);
-
-    // x-axis label
-    beerSvg
-        .append("text")
-            .attr("x", width / 2 + margin)
-            .attr("y", height + 100)
-            .attr("text-anchor", "middle")
-            .text("Beer Names");
-
-    
-    // Title of graph
-    beerSvg
-        .append("text")
-        .attr("x", width / 2 + margin)
-        .attr("y", margin / 2)
-        .attr("text-anchor", "middle")
-        .text(attrs.graphTitle);
-
-    // Make the bar charts
-    barChart.selectAll()
-        .data(beers)
-        .enter()
-        .append('rect')
-            .attr('x', (beer) => xScale(beer.name))
-            .attr('y', (beer) => {
-                const beerValue = getBeerValue(beer, attrs.beerValue);
-                return yScale(beerValue);
-            })
-            .attr('height', (beer) => {
-                const beerValue = getBeerValue(beer, attrs.beerValue);
-                return height - yScale(beerValue);
-            })
-            .attr('width', xScale.bandwidth())
-            // get rid of the flickering if we left out these 2 lines
-            .attr("opacity", 0)
-            .attr("opacity", 1)
-            // Tooltip to show up, and dims the hovered bar
-            .on('mouseover', onMouseOverEvent)
-            .on('mousemove', onMouseMoveEvent)
-            .on('mouseleave', onMouseLeaveEvent)
-
-    function onMouseOverEvent(d3event, beer) {
+const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
+    const _onMouseOverEvent = (d3event, beer) => {
         d3.select(this).transition().duration(250).attr("opacity", 0.7);
         tooltip.style('opacity', .9);
         const ttX = d3event.pageX + "px";
         const ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
-    
+        console.log(newAttrs.beerValue);
         tooltip.html(beer.name + "<br/>" 
-            + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
+            + getBeerValue(beer, newAttrs.beerValue) + newAttrs.beerValueSymbol)
             .style("left", ttX)
             .style("top", ttY)
     };
-
-    function onMouseMoveEvent(d3event, beer) {
+    
+    const _onMouseMoveEvent = (d3event, beer) => {
         tooltip.html(beer.name + "<br/>" 
-            + getBeerValue(beer, attrs.beerValue) + attrs.beerValueSymbol)
+            + getBeerValue(beer, newAttrs.beerValue) + newAttrs.beerValueSymbol)
             .style("left", d3event.pageX + "px")
             .style("top", d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px");
     };
-
-    function onMouseLeaveEvent(d3event, beer) {
+    
+    const _onMouseLeaveEvent = (d3event, beer) => {
         d3.select(this).transition().duration(300).attr("opacity", 1);
         tooltip.style("opacity", 0);
     }
-};
 
+    bars.enter()
+        .append("rect")
+        // Tooltip to show up, and dims the hovered bar
+        .merge(bars)
+        .on('mouseover', _onMouseOverEvent)
+        .on('mousemove', _onMouseMoveEvent)
+        .on('mouseleave', _onMouseLeaveEvent)
+        .transition()
+        .duration(UPDATE_TRANSITION_TIME)
+            .attr("x", beer => xScale(beer.name))
+            .attr("y", beer => {
+                const beerValue = getBeerValue(beer, newAttrs.beerValue);
+                return yScale(beerValue);
+            })
+            .attr("height", beer => {
+                const beerValue = getBeerValue(beer, newAttrs.beerValue);
+                return height - yScale(beerValue);
+            })
+            .attr("width", xScale.bandwidth())
+            .attr("fill", "#69b3a2")    
+            // Stops flickering on first hover
+            .attr("opacity", 0)
+            .attr("opacity", 1)
+
+};
 
 /**
  * Not all beers have a direct value (beer.abv, beer.ibu)
