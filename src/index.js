@@ -5,7 +5,7 @@ import * as d3 from "d3";
 import { transition } from "d3";
 import { BEER_ATTRS } from './beerAttrs';
 import { beers } from './beers';
-const TOOLTIP_HEIGHT_OFFSET = 60;
+const TOOLTIP_HEIGHT_OFFSET = 75;
 const UPDATE_TRANSITION_TIME = 1000;
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
 
@@ -125,8 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
-    const _onMouseOverEvent = (d3event, beer) => {
-        d3.select(this).transition().duration(250).attr("opacity", 0.7);
+    function _onMouseOverEvent(d3event, beer) {
+        d3.select(this).transition('mouseover').duration(250).attr("opacity", 0.7);
         tooltip.style('opacity', .9);
         const ttX = d3event.pageX + "px";
         const ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
@@ -144,8 +144,8 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
             .style("top", d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px");
     };
     
-    const _onMouseLeaveEvent = (d3event, beer) => {
-        d3.select(this).transition().duration(300).attr("opacity", 1);
+    function _onMouseLeaveEvent(d3event, beer) {
+        d3.select(this).transition('mouseleave').duration(300).attr("opacity", 1);
         tooltip.style("opacity", 0);
     }
 

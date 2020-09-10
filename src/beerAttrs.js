@@ -11,6 +11,7 @@ export const BEER_ATTRS = {
     graphTitle: "ABV of Different Beers",
     beerValue: ABV,
     beerValueSymbol: "%",
+    beerPrefix: 'ABV: '
   },
   ibu: {
     yMax: IBU_MAX_Y,
