@@ -19,3 +19,11 @@
     font-size: 28px;
     font-weight: 700;
 }
+
+.axis-label {
+    font-size: 20px;
+}
+
+.x-axis-value {
+    font-size: 12px;
+}

@@ -8,6 +8,7 @@ import { beers } from './beers';
 const TOOLTIP_HEIGHT_OFFSET = 70;
 const TOOLTIP_WIDTH_OFFSET = 10;
 const UPDATE_TRANSITION_TIME = 1000;
+const X_LABEL_HEIGHT_OFFSET = 120; 
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
 
 
@@ -63,14 +64,16 @@ document.addEventListener("DOMContentLoaded", () => {
             .attr('y', -margin / 2)
             .attr('transform', 'rotate(-90)')
             .attr('text-anchor', 'middle')
+            .attr("class", "axis-label")
             .text('ABVs');
 
     // x-axis label
     const xLabel = beerSvg
         .append("text")
             .attr("x", width / 2)
-            .attr("y", height + 50)
+            .attr("y", height + X_LABEL_HEIGHT_OFFSET)
             .attr("text-anchor", "middle")
+            .attr("class", "axis-label")
             .text("Beer Names");
     
     // Title of graph
@@ -89,9 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
      *      e.g. updateBeerBarChart(BEER_ATTRS.abv) 
      */
     function updateBeerBarChart(attrs) {
-        // Update x-axis
         xScale.domain(beers.map((beer) => beer.name)).padding(0.2);
-        xAxis.call(d3.axisBottom(xScale));
+        xAxis.call(d3.axisBottom(xScale))
+            .selectAll("text")
+                .style("text-anchor", "end")
+                .attr("class", "x-axis-value")
+                .attr("dx", "-10px")
+                .attr('transform', () => "rotate(-30)")
 
         // Update y-axis
         yScale.domain([0, attrs.yMax]);
