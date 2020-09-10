@@ -11,8 +11,9 @@ const UPDATE_TRANSITION_TIME = 1000;
 const X_LABEL_HEIGHT_OFFSET = 120; 
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
 
-
-
+/**
+ * Creates the beer bar graph
+ */
 document.addEventListener("DOMContentLoaded", () => { 
     const margin = 60;
     const width = 600 - 2 * margin;
@@ -23,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .attr("width", width + margin * 2)
         .append('g')
             .attr('transform', `translate(${margin}, ${margin})`)
-
 
     // Y-axis scale 
     const yScale = d3.scaleLinear()
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
      *      Pass in an object from BEER_ATTRS to update the data
      *      e.g. updateBeerBarChart(BEER_ATTRS.abv) 
      */
-    function updateBeerBarChart(attrs) {
+    const updateBeerBarChart = (attrs) => {
         xScale.domain(beers.map((beer) => beer.name)).padding(0.2);
         xAxis.call(d3.axisBottom(xScale))
             .selectAll("text")
@@ -120,8 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         bars.exit().remove();
     }
-    updateBeerBarChart(BEER_ATTRS.abv);
-    initDropdownList(updateBeerBarChart);
+
+    /**
+     * Still part of DOMContentLoaded
+     * Call the functions down here to initialize the main page
+     */
+    initialize(updateBeerBarChart);
   // category: style.category.name||id
   // SRM is color of beer (0 is light, 40+ is dark)
   // ogmin/max is original gravity, meaning it converts more sugar into alcohol, higher ABV and less IBU?
@@ -134,13 +138,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // 
 });
 
+const initialize = (updateBeerBarChart) => {
+    initDropdownList(updateBeerBarChart);
+    updateBeerBarChart(BEER_ATTRS.abv);
+}
+
+/**
+ * Adds bars to the bar graph that calls this function
+ * @param {d3 object} bars 
+ * @param {object} newAttrs 
+ * @param {d3 scale} xScale 
+ * @param {d3 scale} yScale 
+ * @param {number} height 
+ * @param {html element} tooltip 
+ */
 const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
     function _onMouseOverEvent(d3event, beer) {
         d3.select(this).transition('mouseover').duration(250).attr("opacity", 0.7);
         tooltip.style('opacity', .9);
         const ttX = d3event.pageX + TOOLTIP_WIDTH_OFFSET + "px";
         const ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
-        console.log(newAttrs.beerValue);
         tooltip.html(beer.name + "<br/>" 
             + getBeerValue(beer, newAttrs.beerValue) + newAttrs.beerValueSymbol)
             .style("left", ttX)
