@@ -183,7 +183,10 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
     
     function _onMouseLeaveEvent(d3event, beer) {
         d3.select(this).transition('mouseleave').duration(300).attr("opacity", 1);
-        tooltip.style("opacity", 0);
+        tooltip.style("opacity", 0)
+            .style("left", d3.screenX)
+            .style("top", d3.screenY);
+        console.log(d3event);
     }
 
     bars.enter()
