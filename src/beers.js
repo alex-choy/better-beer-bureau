@@ -1,5 +1,5 @@
 // Sort beers by name (letters and digits only)
-function alphabeticalBeers(a, b) {
+const alphabeticalBeers = (a, b) => {
     const aName = a.name.replace(/^[^a-z\d]*|[^a-z\d]*$/gi, '').toUpperCase();
     const bName = b.name.replace(/^[^a-z\d]*|[^a-z\d]*$/gi, '').toUpperCase();
     if(aName < bName) {
@@ -10,7 +10,18 @@ function alphabeticalBeers(a, b) {
     return 0;
 }
 
-export const beers = [
+export const deleteBeer = (beerId) => {
+    console.log(unsortedBeers);
+    const newBeers = unsortedBeers.map((beer, idx) => {
+        if(beer.id !== beerId) {
+            return beer;
+        }
+    });
+    beers = newBeers;
+    unsortedBeers = newBeers;
+};
+
+const unsortedBeers = [
   {
     id: "zfP2fK",
     name: "12th Of Never",
@@ -233,6 +244,6 @@ export const beers = [
       updateDate: "2015-04-07 15:28:43",
     },
   },
-]
-  .sort(alphabeticalBeers)
-  .sort(alphabeticalBeers);
+];
+
+export const beers = unsortedBeers.sort(alphabeticalBeers);

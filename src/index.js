@@ -5,6 +5,7 @@ import * as d3 from "d3";
 import { transition } from "d3";
 import { BEER_ATTRS } from './beerAttrs';
 import { beers } from './beers';
+import { initBeerList } from "./beerList";
 const TOOLTIP_HEIGHT_OFFSET = 70;
 const TOOLTIP_WIDTH_OFFSET = 10;
 const UPDATE_TRANSITION_TIME = 1000;
@@ -141,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const initialize = (updateBeerBarChart) => {
     initDropdownList(updateBeerBarChart);
     updateBeerBarChart(BEER_ATTRS.abv);
+    initBeerList(beers)
 }
 
 /**

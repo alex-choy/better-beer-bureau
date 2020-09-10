@@ -15,6 +15,11 @@
     left: -13%;
 }
 
+#beer-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
 .graph-title {
     font-size: 28px;
     font-weight: 700;
@@ -26,4 +31,8 @@
 
 .x-axis-value {
     font-size: 12px;
+}
+
+.fas {
+    padding-left: 5px;
 }
