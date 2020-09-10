@@ -3,6 +3,8 @@ const deleteBeerFromList = (beerId) => {
     const beer = document.getElementById(beerId);
     beer.parentNode.removeChild(beer);
     Beer.deleteBeer(beerId);
+    const beers = require('./beers.json');
+    console.log(beers);
 }
 
 export const initBeerList = (updateBeerBarChart) => {
