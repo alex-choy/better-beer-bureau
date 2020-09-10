@@ -11,16 +11,7 @@ const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // Adds Acces-Control-
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    // setBeerBar(beerAttrs.abv);
-    const abvBtn = document.getElementById("abv-btn");
-    abvBtn.addEventListener("click", () => updateBeerBarChart(BEER_ATTRS.abv));
-    const ibuBtn = document.getElementById("ibu-btn");
-    ibuBtn.addEventListener("click", () => updateBeerBarChart(BEER_ATTRS.ibu));
-    const srmBtn = document.getElementById("srm-btn");
-    srmBtn.addEventListener("click", () => updateBeerBarChart(BEER_ATTRS.srm));
-    
-
+document.addEventListener("DOMContentLoaded", () => { 
     const margin = 60;
     const width = 600 - 2 * margin;
     const height = 450 - 2 * margin;
@@ -117,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bars.exit().remove();
     }
     updateBeerBarChart(BEER_ATTRS.abv);
+    initDropdownList(updateBeerBarChart);
   // category: style.category.name||id
   // SRM is color of beer (0 is light, 40+ is dark)
   // ogmin/max is original gravity, meaning it converts more sugar into alcohol, higher ABV and less IBU?
@@ -178,6 +170,20 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
             .attr("opacity", 0)
             .attr("opacity", 1)
 
+};
+
+const initDropdownList = (updateBeerBarChart) => {
+  const beerDrpdwn = document.getElementById("beer-drpdwn");
+  for (const beerAttr in BEER_ATTRS) {
+    const option = document.createElement("option");
+    option.value = beerAttr;
+    option.text = BEER_ATTRS[beerAttr].yTitle;
+    beerDrpdwn.appendChild(option);
+  }
+  beerDrpdwn.addEventListener("change", function (value) {
+    const beerValue = this.options[this.selectedIndex].value;
+    updateBeerBarChart(BEER_ATTRS[beerValue]);
+  });
 };
 
 /**
