@@ -1,0 +1,6 @@
+.tooltip {
+    padding: 10px;
+    z-index: 5;
+    background-color: goldenrod;
+    border: 1px solid black;
+}

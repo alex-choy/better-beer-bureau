@@ -1,0 +1,39 @@
+/* .beer-val-dropdown {
+    display: block;
+    position: relative;
+}
+
+.dropdown {
+    display: hidden;
+    position: relative;
+}
+
+.beer-val-dropdown:hover > .dropdown {
+    display: block;
+    background-color: red;
+    height: 200px;
+    width: 100px;
+} */
+.beer-info {
+    display: flex;
+}
+
+.graph {
+    margin: auto;
+    padding-left: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#beer-drpdwn {
+    width: 20%;
+    padding: 5px 10px;
+    position: relative;
+    left: -13%;
+}
+
+.graph-title {
+    font-size: 28px;
+    font-weight: 700;
+}

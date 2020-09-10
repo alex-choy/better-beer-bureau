@@ -11,19 +11,22 @@ export const BEER_ATTRS = {
     graphTitle: "ABV of Different Beers",
     beerValue: ABV,
     beerValueSymbol: "%",
+    prefix: "ABV: ",
   },
   ibu: {
     yMax: IBU_MAX_Y,
     yTitle: "IBUs",
-    graphTitle: "IBUs of Different Beers",
+    graphTitle: "IBU of Different Beers",
     beerValue: IBU,
     beerValueSymbol: " IBUs",
+    prefix: "IBU: ",
   },
   srm: {
     yMax: SRM_MAX_Y,
     yTitle: "SRM",
-    graphTitle: "SRMs of Different Beers",
+    graphTitle: "SRM of Different Beers",
     beerValue: SRM,
     beerValueSymbol: " SRMs",
+    prefix: "SRM: "
   },
 };
