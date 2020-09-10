@@ -49,9 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Tooltip to follow cursor on hover
     const tooltip = d3.select("body").append("div")
-            .attr("class", "tooltip")
-            .style("position", "absolute")
-            .style("opacity", 0);
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("background", "burlywood")
+        .style("padding", "10px")
+        .style("border-radius", "5px")
+        .style("opacity", 0);
     
     // y-axis label
     const yLabel = beerSvg.append('text')
