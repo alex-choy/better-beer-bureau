@@ -11,7 +11,7 @@ export const deleteBeer = (beerId) => {
 
 export const addBeer = (beer) => {
     unsortedBeers[beer.id] = beer;
-    console.log(unsortedBeers[beer.id]);
+    // console.log(unsortedBeers[beer.id]);
 }
 
 /**
@@ -20,8 +20,8 @@ export const addBeer = (beer) => {
  * @param {beer object} b 
  */
 const alphabeticalBeers = (a, b) => {
-    const aName = a.name.replace(/^[^a-z\d]*|[^a-z\d]*$/gi, "").toUpperCase();
-    const bName = b.name.replace(/^[^a-z\d]*|[^a-z\d]*$/gi, "").toUpperCase();
+    const aName = a.name.toUpperCase();
+    const bName = b.name.toUpperCase();
     if (aName < bName) {
         return -1;
     } else if (aName > bName) {

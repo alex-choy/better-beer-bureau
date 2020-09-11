@@ -21,8 +21,8 @@ export const sortBeerList = () => {
     })
 
     lis.sort(function (li1, li2){
-        const text1 =  li1.childNodes[1].textContent;
-        const text2 = li2.childNodes[1].textContent;
+        const text1 =  li1.childNodes[1].textContent.toUpperCase();
+        const text2 = li2.childNodes[1].textContent.toUpperCase();
         if(text1 < text2) {
             return -1
         } else if (text1 > text2) {
@@ -31,7 +31,7 @@ export const sortBeerList = () => {
         return 0;
     });
     lis.forEach(li => {
-        console.log(li.childNodes[1].textContent);
+        // console.log(li.childNodes[1].textContent);
     })
 };
 
@@ -68,11 +68,9 @@ const addBeerToList = (beer, updateBeerBarChart) => {
  * @param {number} numBeers # beers to get  
  */
 export const getRandomBeer = (updateBeerBarChart, numBeers = 1) => {
-    console.log("getRandomBeer");
     const req = new XMLHttpRequest();
     req.onreadystatechange = function () {
       if (this.readyState == READY && this.status == 200) {
-          console.log('got new beers');
           const newBeers = JSON.parse(this.responseText).data;
           newBeers.forEach(newBeer => {
               addBeerToList(newBeer, updateBeerBarChart);
