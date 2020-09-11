@@ -57,7 +57,15 @@
 }
 
 #search-beer {
-    padding: 3px 5px;
+    padding: 4px 5px;
+}
+
+#search-btn {
+    position: relative;
+    top: 1.5px;
+    left: -5px;
+    padding: 4.25px;
+    border: 1px solid black;
 }
 
 #search-btn:hover {
@@ -73,3 +81,4 @@
     0% { opacity: 1.0; }
     100% { opacity: 0.0; }
 }
+

@@ -21,6 +21,7 @@ export const initBeerList = (updateBeerBarChart) => {
         deleteEle.className = "fas fa-minus-circle";
         deleteEle.addEventListener("click", () => {
           deleteBeerFromList(beerEle.id);
+          updateBeerBarChart();
         });
 
         beerEle.appendChild(deleteEle);

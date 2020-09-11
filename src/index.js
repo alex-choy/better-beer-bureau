@@ -1,4 +1,5 @@
 import "./styles/main.css";
+import "./styles/search-beer.css"
 // alert("connected js");
 import { breweryAPIKey } from "./config/keys_dev";
 import * as d3 from "d3";
@@ -141,13 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const initialize = (updateBeerBarChart) => {
-    initDropdownList(updateBeerBarChart);
+    initValueDropdownList(updateBeerBarChart);
     updateBeerBarChart(BEER_ATTRS.abv);
     initBeerList(updateBeerBarChart);
-    d3.selectAll(".fa-minus-circle")
-        .on('click', () => {
-            return updateBeerBarChart();
-        });
 }
 
 /**
@@ -213,7 +210,7 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
 
 };
 
-const initDropdownList = (updateBeerBarChart) => {
+const initValueDropdownList = (updateBeerBarChart) => {
   const beerDrpdwn = document.getElementById("beer-drpdwn");
   for (const beerAttr in BEER_ATTRS) {
     const option = document.createElement("option");

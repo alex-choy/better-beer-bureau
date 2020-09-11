@@ -1,0 +1,8 @@
+#beer-search-btn {
+    position: relative;
+}
+
+#beer-dropdown {
+    display: none;
+    position: absolute;
+}

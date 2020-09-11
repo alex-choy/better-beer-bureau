@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
     <script src="bundle.js"></script>
     <!-- <script src="https://d3js.org/d3.v6.js"></script> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
@@ -20,8 +21,16 @@
             Beers on Display
             <ul id="beer-list"></ul>
             <section>
-                <input id="search-beer" type="text" placeholder="Search...">
+                <input id="search-beer" type="search" placeholder="Search...">
                 <i id="search-btn" class="fas fa-search"></i>
+            </section>
+            <section>
+                <div class="dropdown">
+                    <button id="beer-search-btn">+ Add Beer</button>
+                    <div id="beer-dropdown">
+                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    </div>
+                </div>
             </section>
         </aside>
     </section>
