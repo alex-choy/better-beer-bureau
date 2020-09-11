@@ -11,8 +11,10 @@ const TOOLTIP_WIDTH_OFFSET = 10;
 const UPDATE_TRANSITION_TIME = 1000;
 const X_LABEL_HEIGHT_OFFSET = 120; 
 let prevAttrs = 'abv';
-const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
-
+export const BEER_API_URL =
+  "https://sandbox-api.brewerydb.com/v2/"; 
+export const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+// Adds Acces-Control-Allow-Origin header to the request
 /**
  * Creates the beer bar graph
  */
@@ -142,9 +144,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const initialize = (updateBeerBarChart) => {
+    initBeerList(updateBeerBarChart);  
     initValueDropdownList(updateBeerBarChart);
     updateBeerBarChart(BEER_ATTRS.abv);
-    initBeerList(updateBeerBarChart);
 }
 
 /**

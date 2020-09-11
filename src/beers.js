@@ -9,6 +9,11 @@ export const deleteBeer = (beerId) => {
     delete unsortedBeers[beerId];
 };
 
+export const addBeer = (beer) => {
+    unsortedBeers[beer.id] = beer;
+    console.log(unsortedBeers[beer.id]);
+}
+
 /**
  * Sort beers by name
  * @param {beer object} a 
