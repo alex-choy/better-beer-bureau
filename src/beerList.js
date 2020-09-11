@@ -9,7 +9,18 @@ const deleteBeerFromList = (beerId) => {
     Beer.deleteBeer(beerId);
 }
 
+/**
+ * Always keep beer list sorted alphabetically
+ */
+export const sortBeerList = () => {
+    const ul = document.getElementById('beer-list');
+    const clonedUl = document.cloneNode(ul, false);
+    console.log(ul.childNodes[0].childNodes[1].textContent);
+
+};
+
 const addBeerToList = (beer, updateBeerBarChart) => {
+    // setTimeout(sortBeerList, 2000);
     Beer.addBeer(beer);
 
     const beerEle = document.createElement('li');
@@ -35,75 +46,28 @@ const addBeerToList = (beer, updateBeerBarChart) => {
     updateBeerBarChart();
 };
 
-const getRandomBeer = (updateBeerBarChart) => {
+/**
+ * 
+ * @param {function} updateBeerBarChart function to call after we get a beer
+ * @param {number} numBeers # beers to get  
+ */
+export const getRandomBeer = (updateBeerBarChart, numBeers = 1) => {
     console.log("getRandomBeer");
     const req = new XMLHttpRequest();
     req.onreadystatechange = function () {
       if (this.readyState == READY && this.status == 200) {
-          const newBeer = JSON.parse(this.responseText).data[0];
-          addBeerToList(newBeer, updateBeerBarChart);
+          console.log('got new beers');
+          const newBeers = JSON.parse(this.responseText).data;
+          newBeers.forEach(newBeer => {
+              addBeerToList(newBeer, updateBeerBarChart);
+          })
       }
     };
-    const apiCall = `${PROXY_URL}${BEER_API_URL}beers/?${breweryAPIKey}&order=random`;
+    const apiCall = `${PROXY_URL}${BEER_API_URL}beers/?${breweryAPIKey}&order=random&randomCount=${numBeers}`;
     req.open('GET', apiCall);
-    // req.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-    // req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    // req.setRequestHeader("X-PINGOTHER", "pingpong");
-    // req.setRequestHeader("Content-Type", "application/xml");
     req.send();
 };
 
 export const initBeerList = (updateBeerBarChart) => {
-    // const req = new XMLHttpRequest();
-    // const apiCall = `${PROXY_URL}${BEER_API_URL}beers/?${breweryAPIKey}&order=random`;
-    // req.open(
-    //   "GET", apiCall
-    // );
-    // req.onload = () => {
-    //   console.log(JSON.parse(req.response));
-    // };
-    // req.send();
-    // getRandomBeer(updateBeerBarChart);
-
-    // const req = new XMLHttpRequest();
-    // req.onreadystatechange = function () {
-    //   if (this.readyState == READY && this.status == 200) {
-    //     const newBeer = JSON.parse(this.responseText).data[0];
-    //     addBeerToList(newBeer, updateBeerBarChart);
-    //   }
-    // };
-    // const apiCall = `${PROXY_URL}${BEER_API_URL}beers/?${breweryAPIKey}&order=random`;
-    // req.open("GET", apiCall);
-    // req.send();
-
-
-    // Initialize 'Add Beer' button to add ramdom beer to the list
-     for(let i = 0; i < 5; i++) {
-         getRandomBeer(updateBeerBarChart);
-     }
-    // getRandomBeer(updateBeerBarChart);
-    // Add exisitng beers to the list
-    // const beerList = document.getElementById("beer-list");
-    // Beer.beers.forEach((beer) => {
-    //     addBeerToList(beer, updateBeerBarChart);
-        // const beerEle = document.createElement("li");
-        // // beerEle.innerHTML = beer.name;
-        // beerEle.className = "beer-item";
-        // beerEle.id = beer.id;
-
-        // const beerName = document.createElement("span");
-        // beerName.innerText = beer.name;
-        // // Add delete icon to remove beer from list
-        // const deleteEle = document.createElement("i");
-        // deleteEle.className = "fas fa-minus-circle";
-        // deleteEle.addEventListener("click", () => {
-        //   deleteBeerFromList(beerEle.id);
-        //   updateBeerBarChart();
-        // });
-
-        // beerEle.appendChild(deleteEle);
-        // beerEle.appendChild(beerName);
-
-        // beerList.appendChild(beerEle);
-    // });
+    getRandomBeer(updateBeerBarChart, 10);
 };

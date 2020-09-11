@@ -5,7 +5,8 @@ import { breweryAPIKey } from "./config/keys_dev";
 import * as d3 from "d3";
 import { transition } from "d3";
 import { BEER_ATTRS } from './beerAttrs';
-import { initBeerList } from "./beerList";
+import { initBeerList, sortBeerList, getRandomBeer } from "./beerList";
+import { beers } from './beers';
 const TOOLTIP_HEIGHT_OFFSET = 70;
 const TOOLTIP_WIDTH_OFFSET = 10;
 const UPDATE_TRANSITION_TIME = 1000;
@@ -13,8 +14,10 @@ const X_LABEL_HEIGHT_OFFSET = 120;
 let prevAttrs = 'abv';
 export const BEER_API_URL =
   "https://sandbox-api.brewerydb.com/v2/"; 
-export const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+export const PROXY_URL = "https://radiant-sea-31078.herokuapp.com/";
 // Adds Acces-Control-Allow-Origin header to the request
+
+
 /**
  * Creates the beer bar graph
  */
@@ -237,14 +240,18 @@ const initValueDropdownList = (updateBeerBarChart) => {
  */
 const getBeerValue = (beer, field) => {
     if(beer[field]) {
+        if(typeof beer[field] === 'object') {
+            return parseFloat(beer[field].id); // SRMs might come as an object
+        }
         return parseFloat(beer[field]);
-    } else {
+    } else if(beer.style){ // Min/Max vals are packaged inside beer.style
         const min = field + 'Min', max = field + 'Max';
         const minVal = parseFloat(beer.style[min]),
               maxVal = parseFloat(beer.style[max]);
         // value may not exist, return 0 if so
         return (maxVal + minVal) / 2 || 0;
     }
+    return 0;
 }
 
 /**
