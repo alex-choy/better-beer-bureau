@@ -15,8 +15,24 @@ const deleteBeerFromList = (beerId) => {
 export const sortBeerList = () => {
     const ul = document.getElementById('beer-list');
     const clonedUl = document.cloneNode(ul, false);
-    console.log(ul.childNodes[0].childNodes[1].textContent);
+    const lis = [];
+    ul.childNodes.forEach(li => {
+        lis.push(li);
+    })
 
+    lis.sort(function (li1, li2){
+        const text1 =  li1.childNodes[1].textContent;
+        const text2 = li2.childNodes[1].textContent;
+        if(text1 < text2) {
+            return -1
+        } else if (text1 > text2) {
+            return 1
+        }
+        return 0;
+    });
+    lis.forEach(li => {
+        console.log(li.childNodes[1].textContent);
+    })
 };
 
 const addBeerToList = (beer, updateBeerBarChart) => {
