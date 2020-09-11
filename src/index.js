@@ -64,9 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // y-axis label
     const yLabel = beerSvg.append('text')
-            .attr('x', -(height / 2) )
-            .attr('y', -margin / 2)
-            .attr('transform', 'rotate(-90)')
+            .attr('x', "-20px")
+            .attr('y', -margin / 2 + 17)
             .attr('text-anchor', 'middle')
             .attr("class", "axis-label")
             .text('ABVs');

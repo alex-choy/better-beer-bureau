@@ -33,6 +33,42 @@
     font-size: 12px;
 }
 
-.fas {
-    padding-left: 5px;
+.fa-minus-circle {
+    padding-right: 10px;
+    color: black;
+    transition: color 0.25s;
+}
+
+.fa-minus-circle:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.beer-item {
+  opacity: 0;
+  animation: fadeIn 1s 1;
+  animation-fill-mode: forwards;
+}
+
+.delete-beer {
+    opacity: 1;
+    animation: fadeOut 1s 1;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1.0;
+    }
+    100% {
+        opacity: 0.0;
+    }
 }
