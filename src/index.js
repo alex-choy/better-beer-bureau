@@ -138,12 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // SRM is color of beer (0 is light, 40+ is dark)
   // ogmin/max is original gravity, meaning it converts more sugar into alcohol, higher ABV and less IBU?
   // fgmin/max is fermented gravity, lower than og,
-
-
-  // how to re-load new beers?
-  // append on to the current list?
-  // re-fetch all the beers? (bad idea)
-  // 
 });
 
 const initialize = (updateBeerBarChart) => {
@@ -187,9 +181,10 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
     
     function _onMouseLeaveEvent(d3event, beer) {
         d3.select(this).transition('mouseleave').duration(300).attr("opacity", 1);
+        // reset tooltip, move it away to hover over rects again
         tooltip.style("opacity", 0)
-            .style("left", d3.screenX)
-            .style("top", d3.screenY);
+            .style("left", 0)
+            .style("top", 0);
     }
 
     bars.enter()

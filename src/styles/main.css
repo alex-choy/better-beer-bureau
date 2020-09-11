@@ -45,9 +45,10 @@
 }
 
 .beer-item {
-  opacity: 0;
-  animation: fadeIn 1s 1;
-  animation-fill-mode: forwards;
+    font-size: 16px;
+    opacity: 0;
+    animation: fadeIn 1s 1;
+    animation-fill-mode: forwards;
 }
 
 .delete-beer {
@@ -55,20 +56,20 @@
     animation: fadeOut 1s 1;
 }
 
+#search-beer {
+    padding: 3px 5px;
+}
+
+#search-btn:hover {
+    cursor: pointer;
+}
+
 @keyframes fadeIn {
-    0% {
-        opacity: 0.0;
-    }
-    100% {
-        opacity: 1.0;
-    }
+    0% { opacity: 0.0; }
+    100% { opacity: 1.0; }
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1.0;
-    }
-    100% {
-        opacity: 0.0;
-    }
+    0% { opacity: 1.0; }
+    100% { opacity: 0.0; }
 }
