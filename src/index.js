@@ -156,6 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * @param {html element} tooltip 
  */
 const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
+    // mouse events to append to bars
     function _onMouseOverEvent(d3event, beer) {
         d3.select(this).transition('mouseover').duration(250).attr("opacity", 0.7);
         tooltip.style('opacity', .9);
@@ -183,6 +184,7 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
             .style("top", 0);
     }
 
+    // Setup the bars on screen
     bars.enter()
         .append("rect")
         // Tooltip to show up, and dims the hovered bar
@@ -209,14 +211,20 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
 
 };
 
-
+/**
+ * Setup elements on the page
+ * @param {function} updateBeerBarChart 
+ */
 const initialize = (updateBeerBarChart) => {
     initBeerList(updateBeerBarChart);  
     initValueDropdownList(updateBeerBarChart);
     updateBeerBarChart(BEER_ATTRS.abv);
 }
 
-
+/**
+ * Initialize dropdown element 
+ * @param {function} updateBeerBarChart 
+ */
 const initValueDropdownList = (updateBeerBarChart) => {
   const beerDrpdwn = document.getElementById("beer-drpdwn");
   for (const beerAttr in BEER_ATTRS) {
