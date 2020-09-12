@@ -214,7 +214,6 @@ const initialize = (updateBeerBarChart) => {
     initBeerList(updateBeerBarChart);  
     initValueDropdownList(updateBeerBarChart);
     updateBeerBarChart(BEER_ATTRS.abv);
-    setTimeout(sortBeerList, 1000);
 }
 
 

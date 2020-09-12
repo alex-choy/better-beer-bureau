@@ -13,7 +13,6 @@ const deleteBeerFromList = (beerId) => {
  * Always keep beer list sorted alphabetically
  */
 export const sortBeerList = () => {
-    console.log('sorting beer');
     const ul = document.getElementById('beer-list');
     const newUl = document.createElement('ul', false);
     newUl.id = 'beer-list';
@@ -38,14 +37,21 @@ export const sortBeerList = () => {
     ul.parentNode.replaceChild(newUl, ul);
 };
 
-const addBeerToList = (beer, updateBeerBarChart) => {
-    // setTimeout(sortBeerList, 2000);
+/**
+ * Create a beer HTML element and return it
+ * @param {object} beer 
+ * @param {function} updateBeerBarChart 
+ */
+const createBeerElement = (beer, updateBeerBarChart) => {
+    // Add beer to our 'Beer DB' (JSON file)
     Beer.addBeer(beer);
 
+    // Create new <li> for beer
     const beerEle = document.createElement('li');
     beerEle.className = "beer-item";
     beerEle.id = beer.id;
 
+    // Text for the beer name
     const beerName = document.createElement("span");
     beerName.innerText = beer.name;
 
@@ -57,28 +63,43 @@ const addBeerToList = (beer, updateBeerBarChart) => {
         updateBeerBarChart();
     });
 
+    // Add delete button in front of name
     beerEle.appendChild(deleteEle);
     beerEle.appendChild(beerName);
 
-    const beerList = document.getElementById("beer-list");
-    beerList.appendChild(beerEle);
+    return beerEle;
+};
+
+
+const setInitBeerList = (beers, updateBeerBarChart) => {
+    const beerListUl = document.createElement("ul");
+    beerListUl.id = "beer-list";
+    beers.forEach(beer => {
+        const beerEle = createBeerElement(beer, updateBeerBarChart);
+        beerListUl.appendChild(beerEle);
+    });
+    const oldBeerList = document.getElementById("beer-list");
+    oldBeerList.parentElement.replaceChild(beerListUl, oldBeerList);
     updateBeerBarChart();
-    console.log('finished adding');
+    sortBeerList();
 };
 
 /**
  * 
  * @param {function} updateBeerBarChart function to call after we get a beer
- * @param {number} numBeers # beers to get  
+ * @param {number} numBeers number of beers to get  
  */
-export const getRandomBeer = (updateBeerBarChart, numBeers = 1) => {
+export const getRandomBeers = (updateBeerBarChart, numBeers = 1) => {
     const req = new XMLHttpRequest();
     req.onreadystatechange = function () {
       if (this.readyState == READY && this.status == 200) {
-          const newBeers = JSON.parse(this.responseText).data;
-          newBeers.forEach(newBeer => {
-              addBeerToList(newBeer, updateBeerBarChart);
-          })
+        const newBeers = JSON.parse(this.responseText).data;
+        // We only get more than 1 beer on initialization
+        if(numBeers > 1) {
+            setInitBeerList(newBeers, updateBeerBarChart);
+        } else { // Otherwise, add one beer to the list/chart
+
+        }
       }
     };
     const apiCall = `${PROXY_URL}${BEER_API_URL}beers/?${breweryAPIKey}&order=random&randomCount=${numBeers}`;
@@ -87,9 +108,11 @@ export const getRandomBeer = (updateBeerBarChart, numBeers = 1) => {
 };
 
 export const initBeerList = (updateBeerBarChart) => {
-    getRandomBeer(updateBeerBarChart, 4);
-    const beerBtn = document.getElementById("beer-btn");
-    beerBtn.addEventListener('click', () => {
-        getRandomBeer(updateBeerBarChart);
-    })
+    getRandomBeers(updateBeerBarChart, 4);
+    // getBeers();
+    
+    // const beerBtn = document.getElementById("beer-btn");
+    // beerBtn.addEventListener('click', () => {
+    //     getRandomBeers(updateBeerBarChart);
+    // })
 };
