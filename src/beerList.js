@@ -87,7 +87,7 @@ export const getRandomBeer = (updateBeerBarChart, numBeers = 1) => {
 };
 
 export const initBeerList = (updateBeerBarChart) => {
-    getRandomBeer(updateBeerBarChart, 10);
+    getRandomBeer(updateBeerBarChart, 4);
     const beerBtn = document.getElementById("beer-btn");
     beerBtn.addEventListener('click', () => {
         getRandomBeer(updateBeerBarChart);
