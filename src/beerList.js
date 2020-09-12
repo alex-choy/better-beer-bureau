@@ -13,8 +13,10 @@ const deleteBeerFromList = (beerId) => {
  * Always keep beer list sorted alphabetically
  */
 export const sortBeerList = () => {
+    console.log('sorting beer');
     const ul = document.getElementById('beer-list');
-    const clonedUl = document.cloneNode(ul, false);
+    const newUl = document.createElement('ul', false);
+    newUl.id = 'beer-list';
     const lis = [];
     ul.childNodes.forEach(li => {
         lis.push(li);
@@ -31,8 +33,9 @@ export const sortBeerList = () => {
         return 0;
     });
     lis.forEach(li => {
-        // console.log(li.childNodes[1].textContent);
+        newUl.appendChild(li);
     })
+    ul.parentNode.replaceChild(newUl, ul);
 };
 
 const addBeerToList = (beer, updateBeerBarChart) => {

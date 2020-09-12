@@ -28680,8 +28680,10 @@ var deleteBeerFromList = function deleteBeerFromList(beerId) {
 
 
 var sortBeerList = function sortBeerList() {
+  console.log('sorting beer');
   var ul = document.getElementById('beer-list');
-  var clonedUl = document.cloneNode(ul, false);
+  var newUl = document.createElement('ul', false);
+  newUl.id = 'beer-list';
   var lis = [];
   ul.childNodes.forEach(function (li) {
     lis.push(li);
@@ -28698,8 +28700,10 @@ var sortBeerList = function sortBeerList() {
 
     return 0;
   });
-  lis.forEach(function (li) {// console.log(li.childNodes[1].textContent);
+  lis.forEach(function (li) {
+    newUl.appendChild(li);
   });
+  ul.parentNode.replaceChild(newUl, ul);
 };
 
 var addBeerToList = function addBeerToList(beer, updateBeerBarChart) {
