@@ -6,3 +6,14 @@
     display: none;
     position: absolute;
 }
+
+.new-beer {
+    /* color: red; */
+    animation: red-text-fade-away 6s;
+}
+
+@keyframes red-text-fade-away {
+    0% { color: red; }
+    75% { color: red; }
+    100% { color: black; }
+}

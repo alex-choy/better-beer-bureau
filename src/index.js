@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const horizLines = beerSvg
         .append("g")
         .attr("class", "grid")
+        .style("color", "lightgray")
         .call(
             d3.axisLeft().scale(yScale).tickSize(-width, 0, 0).tickFormat("")
         );
@@ -111,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .selectAll("text")
                 .style("text-anchor", "end")
                 .attr("class", "x-axis-value")
+                .attr("class", "new-beer")
                 .attr("dx", "-10px")
                 .attr('transform', () => "rotate(-30)")
 

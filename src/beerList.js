@@ -93,21 +93,32 @@ const setInitBeerList = (beers, updateBeerBarChart) => {
 };
 
 
-const insertNewBeer = (newBeer) => {
-    const beerEle = createBeerElement(newBeer);
+const insertNewBeer = (newBeer, updateBeerBarChart) => {
+    // New beer
+    const beerEle = createBeerElement(newBeer, updateBeerBarChart);
+    beerEle.className = "new-beer";
     const newBeerName = beerEle.childNodes[1].innerText;
-    const beerListLis = document.getElementById("beer-list").childNodes;
 
-    // Find the correct index to place the new beer
-    for(let i = 0; i < beerListLis.length; i++) {
-        const beerLi = beerListLis[i];
-        const currBeerName = beerLi.childNodes[1].innerText;
-        if(newBeerName < currBeerName) {
-            console.log(`Insert "${newBeer.name}" here: `, i);
-            // use insertBefore() here?
-            break;
+    // Beer List
+    const beerList = document.getElementById("beer-list");
+    const beerListLis = beerList.childNodes;
+
+    // Check if beer belongs at end of the list
+    const lastBeer = beerListLis[beerListLis.length - 1];
+    if(beerListLis.length < 1 || newBeerName >= lastBeer.childNodes[1].innerText) {
+        beerList.appendChild(beerEle);
+    } else {
+        // Find the correct index to place the new beer
+        for(let i = 0; i <= beerListLis.length; i++) {
+            const beerLi = beerListLis[i];
+            const currBeerName = beerLi.childNodes[1].innerText;
+            if(newBeerName < currBeerName) {
+                beerList.insertBefore(beerEle, beerListLis[i]);
+                break;
+            } 
         }
     }
+    updateBeerBarChart();
 };
 
 /**
@@ -124,7 +135,7 @@ export const getRandomBeers = (updateBeerBarChart, numBeers = 1) => {
         if(numBeers > 1) {
             setInitBeerList(newBeers, updateBeerBarChart);
         } else { // Otherwise, add one beer to the list/chart
-            insertNewBeer(newBeers[0])
+            insertNewBeer(newBeers[0], updateBeerBarChart);
         }
       }
     };
