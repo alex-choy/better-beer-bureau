@@ -146,13 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // fgmin/max is fermented gravity, lower than og,
 });
 
-const initialize = (updateBeerBarChart) => {
-    initBeerList(updateBeerBarChart);  
-    initValueDropdownList(updateBeerBarChart);
-    updateBeerBarChart(BEER_ATTRS.abv);
-    setTimeout(sortBeerList, 1000);
-}
-
 /**
  * Adds bars to the bar graph that calls this function
  * @param {d3 object} bars 
@@ -215,6 +208,15 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
             .attr("opacity", 1)
 
 };
+
+
+const initialize = (updateBeerBarChart) => {
+    initBeerList(updateBeerBarChart);  
+    initValueDropdownList(updateBeerBarChart);
+    updateBeerBarChart(BEER_ATTRS.abv);
+    setTimeout(sortBeerList, 1000);
+}
+
 
 const initValueDropdownList = (updateBeerBarChart) => {
   const beerDrpdwn = document.getElementById("beer-drpdwn");

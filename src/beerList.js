@@ -63,6 +63,7 @@ const addBeerToList = (beer, updateBeerBarChart) => {
     const beerList = document.getElementById("beer-list");
     beerList.appendChild(beerEle);
     updateBeerBarChart();
+    console.log('finished adding');
 };
 
 /**
@@ -87,4 +88,8 @@ export const getRandomBeer = (updateBeerBarChart, numBeers = 1) => {
 
 export const initBeerList = (updateBeerBarChart) => {
     getRandomBeer(updateBeerBarChart, 10);
+    const beerBtn = document.getElementById("beer-btn");
+    beerBtn.addEventListener('click', () => {
+        getRandomBeer(updateBeerBarChart);
+    })
 };
