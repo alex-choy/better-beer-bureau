@@ -4,11 +4,14 @@ module.exports = {
     mode: "none",
     entry: "./src/index.js",
     output: {
+        path: path.resolve(__dirname),
         filename: "bundle.js",
     },
     devServer: {
         contentBase: path.join(__dirname),
+        watchContentBase: true
     },
+    // watch: true,
     module: {
         rules: [
             {

@@ -28681,7 +28681,7 @@ var deleteBeerFromList = function deleteBeerFromList(beerId) {
 
 var sortBeerList = function sortBeerList() {
   console.log('sorting beer');
-  var ul = document.getElementById('beer-list');
+  var ul = document.getElasdfementById('beer-list');
   var newUl = document.createElement('ul', false);
   newUl.id = 'beer-list';
   var lis = [];
