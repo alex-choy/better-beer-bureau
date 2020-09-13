@@ -64,6 +64,11 @@ body {
     width: 225px;
 }
 
+#description {
+    background-color: rgb(240, 240, 240);
+    line-height: 22px;
+}
+
 .desc-title, .desc-range {
     font-weight: 700;
 }
@@ -74,10 +79,6 @@ body {
 
 .beer-list-wrapper {
     background-color: rgb(228, 198, 159);
-}
-
-#description {
-    background-color: white;
 }
 
 .graph-title {
