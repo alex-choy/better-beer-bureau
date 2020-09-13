@@ -4,6 +4,10 @@ const SRM_MAX_Y = 50;
 const IBU = "ibu";
 const ABV = "abv";
 const SRM = "srm";
+
+/**
+ * Send an attr to update the bar graph with different information
+ */
 export const BEER_ATTRS = {
   abv: {
     yMax: ABV_MAX_Y,
@@ -22,7 +26,7 @@ export const BEER_ATTRS = {
     beerValue: IBU,
     beerValueSymbol: " IBUs",
     description:
-      '<span class="desc-title">International Bitterness Unit (IBU)</span> is a measure of bitterness in a beer. The range of IBUs is typically <span class="desc-range">between 0 and 100 IBUs</span>, but beers may go beyond 100 IBUs. A higher number will result in a more bitter beer (IPAs), while a lower number will be less bitter (any light beer). ',
+      '<span class="desc-title">International Bitterness Unit (IBU)</span> is a measure of bitterness in a beer. The range of IBUs is typically <span class="desc-range">between 0 and 100 IBUs</span>, but beers may go beyond 100 IBUs. A higher number will result in a more bitter beer (e.g. IPAs), while a lower number will be less bitter (e.g. any light beer). ',
   },
   srm: {
     yMax: SRM_MAX_Y,
@@ -31,6 +35,6 @@ export const BEER_ATTRS = {
     beerValue: SRM,
     beerValueSymbol: " SRMs",
     description:
-      '<span class="desc-title">Standard Reference Method (SRM)</span> represents the color of a beer. Most SRMs range <span class="desc-range">between 0 and 40 SRM</span>, but may go beyond a SRM of 40. A lower number indicates a lighter colored beer (pale ales) while a higher number indicates a darker beer (stouts).',
+      '<span class="desc-title">Standard Reference Method (SRM)</span> represents the color of a beer. Most SRMs range <span class="desc-range">between 0 and 40 SRM</span>, but may go beyond a SRM of 40. A lower number indicates a lighter colored beer (e.g. pale ales) while a higher number indicates a darker beer (e.g. stouts).',
   },
 };

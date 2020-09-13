@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="bundle.js"></script>
-    <!-- <script src="https://d3js.org/d3.v6.js"></script> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
         integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
     <title>Document</title>
@@ -15,22 +14,22 @@
     </header>
     <section class="graph-background">
         <section class="beer-info">
-            <section class="graph">
-                <select id="beer-drpdwn"></select>
-                <svg id="beer-bar"></svg>
-            </section>
             <aside>
-                <section class="beer-list-wrapper aside-area">
+                <section class="beer-list-wrapper aside-box">
                     <h3>
                         Beers on Display
                     </h3>
                     <ul id="beer-list"></ul>
                     <button id="beer-btn" >+ Add Random Beer</button>
                 </section>
-                <section id="description"  class="aside-area">
+                <section id="description"  class="aside-box">
                     This will be some content 
                 </section>
             </aside>
+            <section class="graph">
+                <select id="beer-drpdwn"></select>
+                <svg id="beer-bar"></svg>
+            </section>
         </section>
     </section>
 </body>

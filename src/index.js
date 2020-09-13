@@ -70,14 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .style("padding", "10px")
         .style("border-radius", "5px")
         .style("opacity", 0);
-    
-    // y-axis label
-    // const yLabel = beerSvg.append('text')
-    //         .attr('x', "-20px")
-    //         .attr('y', -margin / 2 + 17)
-    //         .attr('text-anchor', 'middle')
-    //         .attr("class", "axis-label")
-    //         .text('ABVs');
 
     // x-axis label
     const xLabel = beerSvg
@@ -123,7 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
         yAxis.transition().duration(UPDATE_TRANSITION_TIME).call(d3.axisLeft(yScale));
 
         // Update titles
-        // yLabel.text(attrs.yTitle);
         graphTitle.text(attrs.graphTitle);
 
         // Update Horizontal lines
@@ -148,10 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
      * Call the functions down here to initialize the main page
      */
     initialize(updateBeerBarChart);
-  // category: style.category.name||id
-  // SRM is color of beer (0 is light, 40+ is dark)
-  // ogmin/max is original gravity, meaning it converts more sugar into alcohol, higher ABV and less IBU?
-  // fgmin/max is fermented gravity, lower than og,
 });
 
 
