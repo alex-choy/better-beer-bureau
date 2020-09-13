@@ -8,10 +8,6 @@
     animation: red-text-fade-away 6s;
 }
 
-.description {
-    background-color: white;
-}
-
 @keyframes red-text-fade-away {
     0% { color: red; }
     75% { color: red; }

@@ -8,7 +8,7 @@ body {
 .bbb {
     margin: auto;
     width: 300px;
-    background-color: rgb(204, 227, 235);
+    background-color: rgb(240, 240, 240);
     padding: 5px 0px;
     text-align: center;
     font-size: 32px;
@@ -54,15 +54,30 @@ body {
 #beer-list {
     list-style-type: none;
     padding-left: 0;
-    width: 250px;
 }
 
-.beer-list-wrapper {
-    background-color: rgb(228, 198, 159);
+.aside-area {
     height: fit-content;
     padding: 5px 15px 15px;
     border-radius: 5px;
     margin-bottom: 30px;
+    width: 225px;
+}
+
+.desc-title, .desc-range {
+    font-weight: 700;
+}
+
+.desc-title {
+    font-size: 20px;
+}
+
+.beer-list-wrapper {
+    background-color: rgb(228, 198, 159);
+}
+
+#description {
+    background-color: white;
 }
 
 .graph-title {

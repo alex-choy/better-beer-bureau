@@ -136,6 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const bars = beerSvg.selectAll("rect").data(beers);
         addBars(bars, attrs, xScale, yScale, height, tooltip);
 
+        // Update lower-right description box
+        const description = document.getElementById("description");
+        description.innerHTML = attrs.description;
+
         bars.exit().remove();
     }
 
