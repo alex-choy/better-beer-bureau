@@ -24,11 +24,11 @@ export const PROXY_URL = "https://radiant-sea-31078.herokuapp.com/";
  */
 document.addEventListener("DOMContentLoaded", () => { 
     const margin = 60;
-    const width = 600 - 2 * margin;
-    const height = 450 - 2 * margin;
+    const width = 650 - 2 * margin;
+    const height = 500 - 3.5 * margin;
     const beerSvg = d3
         .select("#beer-bar")
-        .attr("height", width + margin * 2)
+        .attr("height", height + margin * 3.5)
         .attr("width", width + margin * 2)
         .attr("x", 100)
         .append('g')

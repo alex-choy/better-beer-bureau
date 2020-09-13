@@ -5,12 +5,22 @@ body {
     background-size: cover;
 }
 
+.bbb {
+    margin: auto;
+    width: 300px;
+    background-color: white;
+    padding: 5px 0px;
+    text-align: center;
+    font-size: 32px;
+}
+
 .graph-background {
-    padding: 20px 30px 40px;
-    margin: 20px 30px;
+    width: 90%;
+    padding: 25px 0px;
+    margin: 10px auto;
     background-color: white;
     border-radius: 20px;
-    opacity: 0.975;
+    animation: slowFadeIn 2.5s;
 }
 
 .beer-info {
@@ -34,6 +44,10 @@ body {
     position: relative;
     /* top: -35px; */
     top: 45px;
+}
+
+#beer-drpdwn:hover {
+    cursor: pointer;
 }
 
 #beer-list {
@@ -96,5 +110,11 @@ body {
 @keyframes fadeOut {
     0% { opacity: 1.0; }
     100% { opacity: 0.0; }
+}
+
+@keyframes slowFadeIn {
+    0% { opacity: 0 }
+    35% { opacity: 0 }
+    100% { opacity: 1 }
 }
 

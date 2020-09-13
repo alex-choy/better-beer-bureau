@@ -1,10 +1,5 @@
-#beer-search-btn {
-    position: relative;
-}
-
-#beer-dropdown {
-    display: none;
-    position: absolute;
+#beer-btn:hover {
+    cursor: pointer;
 }
 
 .new-beer {
