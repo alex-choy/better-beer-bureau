@@ -9,7 +9,7 @@
 
 .new-beer {
     /* color: red; */
-    font-size: 14px;
+    font-size: 16px;
     animation: red-text-fade-away 6s;
 }
 

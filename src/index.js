@@ -11,6 +11,7 @@ const TOOLTIP_HEIGHT_OFFSET = 70;
 const TOOLTIP_WIDTH_OFFSET = 10;
 const UPDATE_TRANSITION_TIME = 1000;
 const X_LABEL_HEIGHT_OFFSET = 120; 
+const MAX_BEER_NAME_LENGTH = 12;
 let prevAttrs = 'abv';
 export const BEER_API_URL =
   "https://sandbox-api.brewerydb.com/v2/"; 
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .select("#beer-bar")
         .attr("height", width + margin * 2)
         .attr("width", width + margin * 2)
+        .attr("x", 100)
         .append('g')
             .attr('transform', `translate(${margin}, ${margin})`)
 
@@ -45,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // x-axis scale for beer names
     const xScale = d3.scaleBand()
         .range([0, width])
-        .domain(beers.map((beer) => beer.name))
+        .domain(beers.map((beer) => smallerBeerName(beer.name)))
         .padding(0.2);
     const xAxis = beerSvg.append('g')
         .attr('transform', `translate(0, ${height})`)
@@ -70,12 +72,12 @@ document.addEventListener("DOMContentLoaded", () => {
         .style("opacity", 0);
     
     // y-axis label
-    const yLabel = beerSvg.append('text')
-            .attr('x', "-20px")
-            .attr('y', -margin / 2 + 17)
-            .attr('text-anchor', 'middle')
-            .attr("class", "axis-label")
-            .text('ABVs');
+    // const yLabel = beerSvg.append('text')
+    //         .attr('x', "-20px")
+    //         .attr('y', -margin / 2 + 17)
+    //         .attr('text-anchor', 'middle')
+    //         .attr("class", "axis-label")
+    //         .text('ABVs');
 
     // x-axis label
     const xLabel = beerSvg
@@ -107,21 +109,21 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         prevAttrs = attrs;
         
-        xScale.domain(beers.map((beer) => beer.name)).padding(0.2);
+        xScale.domain(beers.map((beer) => smallerBeerName(beer.name))).padding(0.2);
         xAxis.call(d3.axisBottom(xScale))
             .selectAll("text")
-                .style("text-anchor", "end")
+                .style("text-anchor", "start")
                 .attr("class", "x-axis-value")
                 .attr("class", "new-beer")
-                .attr("dx", "-10px")
-                .attr('transform', () => "rotate(-30)")
+                .attr("dx", "5px")
+                .attr('transform', () => "rotate(45)")
 
         // Update y-axis
         yScale.domain([0, attrs.yMax]);
         yAxis.transition().duration(UPDATE_TRANSITION_TIME).call(d3.axisLeft(yScale));
 
         // Update titles
-        yLabel.text(attrs.yTitle);
+        // yLabel.text(attrs.yTitle);
         graphTitle.text(attrs.graphTitle);
 
         // Update Horizontal lines
@@ -147,6 +149,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // ogmin/max is original gravity, meaning it converts more sugar into alcohol, higher ABV and less IBU?
   // fgmin/max is fermented gravity, lower than og,
 });
+
+
+/**
+ * Reduce the length of a beer name
+ * @param {string} beerName 
+ */
+const smallerBeerName = (beerName) => {
+    if(beerName.length < MAX_BEER_NAME_LENGTH) {
+        return beerName;
+    } else {
+        return beerName.substring(0, MAX_BEER_NAME_LENGTH) + "...";
+    }
+}
 
 /**
  * Adds bars to the bar graph that calls this function
@@ -196,7 +211,7 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
         .on('mouseleave', _onMouseLeaveEvent)
         .transition()
         .duration(UPDATE_TRANSITION_TIME)
-            .attr("x", beer => xScale(beer.name))
+            .attr("x", beer => xScale(smallerBeerName(beer.name)))
             .attr("y", beer => {
                 const beerValue = getBeerValue(beer, newAttrs.beerValue);
                 return yScale(beerValue);
