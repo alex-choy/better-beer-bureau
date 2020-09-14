@@ -1,5 +1,6 @@
 import "./styles/main.css";
 import "./styles/search-beer.css"
+import "./styles/instructions.css"
 // alert("connected js");
 import { breweryAPIKey } from "./config/keys_dev";
 import * as d3 from "d3";
@@ -226,6 +227,7 @@ const addBars = (bars, newAttrs, xScale, yScale, height, tooltip) => {
 const initialize = (updateBeerBarChart) => {
     initBeerList(updateBeerBarChart);  
     initValueDropdownList(updateBeerBarChart);
+    initInstructions();
     updateBeerBarChart(BEER_ATTRS.abv);
 }
 
@@ -245,6 +247,27 @@ const initValueDropdownList = (updateBeerBarChart) => {
     const beerValue = this.options[this.selectedIndex].value;
     updateBeerBarChart(BEER_ATTRS[beerValue]);
   });
+};
+
+const initInstructions = () => {
+    const instructionsBtn = document.getElementById("instructions");
+    const hideInstrBtn = document.getElementById("hide-instructions");
+    instructionsBtn.addEventListener("click", function() {
+        const instructions = document.getElementsByClassName("instructions-container");
+        for(let i = 0; i < instructions.length; i++) {
+            instructions[i].className += ' show';
+        }
+        instructionsBtn.className += ' hide';
+        hideInstrBtn.classList.remove("hide");
+    });
+    hideInstrBtn.addEventListener("click", function() {
+        const instructions = document.getElementsByClassName("instructions-container");
+        for(let i = 0; i < instructions.length; i++) {
+            instructions[i].classList.remove("show");
+        }
+        instructionsBtn.classList.remove("hide");
+        hideInstrBtn.className += " hide";
+    });
 };
 
 /**

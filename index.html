@@ -16,17 +16,24 @@
         <section class="beer-info">
             <aside>
                 <section class="beer-list-wrapper aside-box">
+                    
                     <h3>
                         Beers on Display
                     </h3>
                     <ul id="beer-list"></ul>
+                    <section id="remove-instr" class="beer-list-instr instructions-container">Click on <i class="fas fa-minus-circle"></i> to remove a beer from the list</section>
                     <button id="beer-btn" >+ Add Random Beer</button>
+                    <section class="beer-list-instr instructions-container">Click on the button to add a beer to the list</section>
                 </section>
                 <section id="description"  class="aside-box">
                     This will be some content 
                 </section>
+                <button id="instructions">How to use this site</button>
+                <button id="hide-instructions" class="hide">Hide instructions</button>
             </aside>
             <section class="graph">
+                <section id="attr-instr" class="instructions-container">Click on the dropdown to change the beer attribute to compare</section>
+                <section id="hover-instr" class="instructions-container">Hover over the bars to see the value of this beer</section>
                 <select id="beer-drpdwn"></select>
                 <svg id="beer-bar"></svg>
             </section>

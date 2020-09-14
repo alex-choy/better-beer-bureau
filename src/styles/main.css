@@ -19,7 +19,7 @@ body {
     width: 90%;
     padding: 25px 0px;
     /* margin: 10px auto; */
-    margin-left: 12%;
+    margin-left: 10%;
     background-color: transparent;
     border-radius: 20px;
     animation: slowFadeIn 2.5s;
@@ -30,6 +30,7 @@ body {
 }
 
 .graph {
+    position: relative;
     background-color: rgb(240, 240, 240);
     padding: 0px 20px;
     margin-left: 25px;
@@ -54,6 +55,11 @@ body {
 #beer-list {
     list-style-type: none;
     padding-left: 0;
+    position: relative;
+}
+
+#beer-btn {
+    position: relative;
 }
 
 .aside-box {
