@@ -19,7 +19,9 @@ body {
     width: 90%;
     padding: 25px 0px;
     /* margin: 10px auto; */
-    margin-left: 10%;
+    /* margin-left: 10%;
+     */
+    margin: auto;
     background-color: transparent;
     border-radius: 20px;
     animation: slowFadeIn 2.5s;
@@ -27,6 +29,7 @@ body {
 
 .beer-info {
     display: flex;
+    margin: auto;
 }
 
 .graph {
