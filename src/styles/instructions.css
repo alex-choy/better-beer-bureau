@@ -18,6 +18,18 @@
     display: none;
 }
 
+.instr-btn {
+    width: 200px;
+    padding: 5px;
+    font-size: 16px;
+    background-color: rgb(175, 242, 80);
+    transition: background-color 0.25s;
+}
+
+.instr-btn:hover {
+    cursor: pointer;
+    background-color: rgb(122, 210, 0);
+}
 
 #remove-instr {
     top: 130px;
