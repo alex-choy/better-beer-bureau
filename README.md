@@ -2,7 +2,7 @@
 
 The Better Beer Bureau was created to compare attributes of different beers on an interactive bar chart. Beers are randomly obtained from BreweryDB, and displayed on a  bar graph. Beers can also be added or removed from the graph, and different beer attributes can be compared.
 
-## Live Link: https://alex-choy.github.io/better-beer-bureau/
+## [Live Link](https://alex-choy.github.io/better-beer-bureau/)
 
 ## Technologies Used
 
