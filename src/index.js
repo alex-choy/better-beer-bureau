@@ -13,6 +13,7 @@ const TOOLTIP_WIDTH_OFFSET = 10;
 const UPDATE_TRANSITION_TIME = 1000;
 const X_LABEL_HEIGHT_OFFSET = 120; 
 const MAX_BEER_NAME_LENGTH = 12;
+const MAX_NUM_DISPLAYED_BEERS = 12;
 let prevAttrs = 'abv';
 export const BEER_API_URL =
   "https://sandbox-api.brewerydb.com/v2/"; 
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .select("#beer-bar")
         .attr("height", height + margin * 3.5)
         .attr("width", width + margin * 2)
+        .attr("max-height", width + margin * 2)
         .attr("x", 100)
         .append('g')
             .attr('transform', `translate(${margin}, ${margin})`)
@@ -97,42 +99,48 @@ document.addEventListener("DOMContentLoaded", () => {
      *      e.g. updateBeerBarChart(BEER_ATTRS.abv) 
      */
     const updateBeerBarChart = (attrs = prevAttrs) => {
-        const beers = Object.values(require("./beers.json")).sort(
-            alphabeticalBeers
-        );
-        prevAttrs = attrs;
+      
+      const beers = Object.values(require("./beers.json")).sort(
+        alphabeticalBeers
+      );
+      prevAttrs = attrs;
         
-        xScale.domain(beers.map((beer) => smallerBeerName(beer.name))).padding(0.2);
-        xAxis.call(d3.axisBottom(xScale))
-            .selectAll("text")
-                .style("text-anchor", "start")
-                .attr("class", "x-axis-value")
-                .attr("class", "new-beer")
-                .attr("dx", "5px")
-                .attr('transform', () => "rotate(45)")
+      // Limit the number of beers on screen, disable the beer button at this limit
+      const beerBtn = document.getElementById("beer-btn");
+      beerBtn.disabled = (beers.length >= MAX_NUM_DISPLAYED_BEERS);
 
-        // Update y-axis
-        yScale.domain([0, attrs.yMax]);
-        yAxis.transition().duration(UPDATE_TRANSITION_TIME).call(d3.axisLeft(yScale));
 
-        // Update titles
-        graphTitle.text(attrs.graphTitle);
+      xScale.domain(beers.map((beer) => smallerBeerName(beer.name))).padding(0.2);
+      xAxis.call(d3.axisBottom(xScale))
+          .selectAll("text")
+              .style("text-anchor", "start")
+              .attr("class", "x-axis-value")
+              .attr("class", "new-beer")
+              .attr("dx", "5px")
+              .attr('transform', () => "rotate(45)")
 
-        // Update Horizontal lines
-        horizLines.transition().duration(UPDATE_TRANSITION_TIME)
-            .call(
-                d3.axisLeft(yScale).tickSize(-width).tickFormat("")
-            );
+      // Update y-axis
+      yScale.domain([0, attrs.yMax]);
+      yAxis.transition().duration(UPDATE_TRANSITION_TIME).call(d3.axisLeft(yScale));
 
-        // Create the bars
-        const bars = beerSvg.selectAll("rect").data(beers);
-        addBars(bars, attrs, xScale, yScale, height, tooltip);
+      // Update titles
+      graphTitle.text(attrs.graphTitle);
 
-        // Update lower-right description box
-        const description = document.getElementById("description");
-        description.innerHTML = attrs.description;
+      // Update Horizontal lines
+      horizLines.transition().duration(UPDATE_TRANSITION_TIME)
+          .call(
+              d3.axisLeft(yScale).tickSize(-width).tickFormat("")
+          );
 
-        bars.exit().remove();
+      // Create the bars
+      const bars = beerSvg.selectAll("rect").data(beers);
+      addBars(bars, attrs, xScale, yScale, height, tooltip);
+
+      // Update lower-right description box
+      const description = document.getElementById("description");
+      description.innerHTML = attrs.description;
+
+      bars.exit().remove();
     }
 
     /**

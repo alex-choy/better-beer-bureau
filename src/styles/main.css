@@ -13,6 +13,7 @@ body {
     text-align: center;
     font-size: 32px;
     border-radius: 10px;
+    margin-top: 40px;
 }
 
 .graph-background {
@@ -29,7 +30,7 @@ body {
 
 .beer-info {
     display: flex;
-    margin: auto;
+    justify-content: center;
 }
 
 .graph {
@@ -41,6 +42,7 @@ body {
     flex-direction: column;
     border-radius: 10px;
     opacity: 1;
+    max-height: 550px;
 }
 
 #beer-drpdwn {
@@ -59,6 +61,9 @@ body {
     list-style-type: none;
     padding-left: 0;
     position: relative;
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-color: black white;
 }
 
 #beer-btn {
@@ -144,4 +149,3 @@ body {
     35% { opacity: 0 }
     100% { opacity: 1 }
 }
-
