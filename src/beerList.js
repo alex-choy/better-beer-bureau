@@ -96,7 +96,7 @@ const setInitBeerList = (beers, updateBeerBarChart) => {
 const insertNewBeer = (newBeer, updateBeerBarChart) => {
     // New beer
     const beerEle = createBeerElement(newBeer, updateBeerBarChart);
-    beerEle.className = "new-beer";
+    beerEle.className = "beer-item";
     const newBeerName = beerEle.childNodes[1].innerText;
 
     // Beer List

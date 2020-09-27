@@ -58,12 +58,21 @@ body {
 }
 
 #beer-list {
-    list-style-type: none;
-    padding-left: 0;
-    position: relative;
-    max-height: 200px;
-    overflow-y: auto;
-    scrollbar-color: black white;
+  list-style-type: none;
+  padding-left: 0;
+  position: relative;
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-color: black white;
+}
+
+.beer-item {
+  font-size: 16px;
+  text-indent: -0.87em;
+  margin-left: 2em;
+  opacity: 0;
+  animation: fadeIn 1s 1;
+  animation-fill-mode: forwards;
 }
 
 #beer-btn {
@@ -121,12 +130,9 @@ body {
     color: red;
 }
 
-.beer-item {
-    font-size: 16px;
-    opacity: 0;
-    animation: fadeIn 1s 1;
-    animation-fill-mode: forwards;
-}
+/* .beer-item span::first-line {
+  margin-left: -10px;
+} */
 
 .delete-beer {
     opacity: 1;
