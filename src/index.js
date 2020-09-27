@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const horizLines = beerSvg
         .append("g")
         .attr("class", "grid")
-        .style("color", "lightgray")
+        .style("color", "	#505050")
         .call(
             d3.axisLeft().scale(yScale).tickSize(-width, 0, 0).tickFormat("")
         );

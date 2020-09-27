@@ -37,6 +37,10 @@ body {
     justify-content: center;
 }
 
+select {
+    background-color: #ffdf2b;
+}
+
 .graph {
     position: relative;
     background-color: #ebe1a7;
@@ -46,7 +50,8 @@ body {
     flex-direction: column;
     border-radius: 10px;
     opacity: 1;
-    max-height: 550px;
+    height: 535px;
+    max-height: 535px;
 }
 
 #beer-drpdwn {
@@ -152,6 +157,35 @@ body {
     opacity: 1;
     animation: fadeOut 1s 1;
 }
+
+.about-links {
+    position: absolute;
+    bottom: -56px;
+    right: 0px;
+    padding: 10px 15px;
+    background-color: rgb(255, 238, 144);
+    border-radius: 10px;
+}
+
+.about-links a {
+    text-decoration: none;
+}
+
+.about-links .fab {
+    color: black;
+    font-size: 28px;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.about-links .fab:hover {
+  opacity: 0.5;
+}
+
+.about-links .fab:last-child {
+  margin-left: 5px;
+}
+
 
 
 @keyframes fadeIn {

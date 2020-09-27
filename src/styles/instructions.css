@@ -12,8 +12,9 @@
 
 .instruction-div {
   position: absolute;
-  top: 45px;
+  top: 50px;
   left: calc(50% + 200px);
+  animation: slowFadeIn 2.5s;
 }
 
 
