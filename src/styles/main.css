@@ -35,7 +35,7 @@ body {
 
 .graph {
     position: relative;
-    background-color: rgb(240, 240, 240);
+    background-color: #ebe1a7;
     padding: 0px 20px;
     margin-left: 25px;
     display: flex;
@@ -57,6 +57,10 @@ body {
     cursor: pointer;
 }
 
+#beer-list-title {
+  margin-top: 5px;
+}
+
 #beer-list {
   list-style-type: none;
   padding-left: 0;
@@ -75,6 +79,11 @@ body {
   animation-fill-mode: forwards;
 }
 
+.new-beer {
+  text-indent: -0.87em;
+  margin-left: 2em;
+}
+
 #beer-btn {
     position: relative;
 }
@@ -89,7 +98,7 @@ body {
 
 #description {
     padding-top: 10px;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(220, 182, 29);
     line-height: 22px;
 }
 
