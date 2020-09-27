@@ -11,13 +11,16 @@
 </head>
 <body>
     <header>
-        <h1 class="bbb">BetterBeerBureau</h1>
+        <h1 class="bbb box">BetterBeerBureau</h1>
+        <div class="instruction-div">
+          <button id="instructions" class="instr-btn">How to use this site</button>
+          <button id="hide-instructions" class="hide instr-btn">Hide instructions</button>
+        </div>
     </header>
-    <button id="instructions" class="instr-btn">How to use this site</button>
     <section class="graph-background">
         <section class="beer-info">
             <aside>
-                <section class="beer-list-wrapper aside-box">
+                <section class="beer-list-wrapper aside-box box">
                     
                     <h3 id="beer-list-title">
                         Beers on Display
@@ -27,12 +30,10 @@
                     <button id="beer-btn" >+ Add Random Beer</button>
                     <section class="beer-list-instr instructions-container">Click on the button to add a beer to the list</section>
                 </section>
-                <section id="description"  class="aside-box">
-                    This will be some content 
+                <section id="description"  class="aside-box box">
                 </section>
-                <button id="hide-instructions" class="hide instr-btn">Hide instructions</button>
             </aside>
-            <section class="graph">
+            <section class="graph box">
                 <section id="attr-instr" class="instructions-container">Click on the dropdown to change the beer attribute to compare</section>
                 <section id="hover-instr" class="instructions-container">Hover over the bars to see the value of this beer</section>
                 <select id="beer-drpdwn"></select>

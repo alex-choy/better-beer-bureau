@@ -10,6 +10,13 @@
     display: none;
 }
 
+.instruction-div {
+  position: absolute;
+  top: 45px;
+  left: calc(50% + 200px);
+}
+
+
 .show {
     display:block;
 }
@@ -22,17 +29,18 @@
     width: 200px;
     padding: 5px;
     font-size: 16px;
-    background-color: rgb(175, 242, 80);
+    background-color: rgb(238, 186, 108);
+    border-radius: 5px;
     transition: background-color 0.25s;
 }
 
 .instr-btn:hover {
     cursor: pointer;
-    background-color: rgb(122, 210, 0);
+    background-color: rgb(222, 133, 0);
 }
 
 #remove-instr {
-    top: 130px;
+  bottom: 60px;
 }
 
 #attr-instr {
@@ -46,6 +54,6 @@
 }
 
 .beer-list-instr {
-    left: 40px;
-    top: 235px;
+    left: -120px;
+    bottom: -25px;
 }
