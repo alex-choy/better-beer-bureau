@@ -16,7 +16,7 @@ const MAX_BEER_NAME_LENGTH = 12;
 const MAX_NUM_DISPLAYED_BEERS = 12;
 let prevAttrs = "abv";
 export const BEER_API_URL = "https://sandbox-api.brewerydb.com/v2/";
-export const PROXY_URL = "https://radiant-sea-31078.herokuapp.com/";
+export const PROXY_URL = "https://murmuring-oasis-36162.herokuapp.com/";
 // Adds Acces-Control-Allow-Origin header to the request
 
 /**
