@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".instructions-container {\n    position: absolute;\n    border: 1px solid black;\n    background-color: rgb(245, 245, 98);\n    padding: 3px 5px;\n    border-radius: 5px;\n    width: 100px;\n    z-index: 5;\n    box-shadow: 5px 10px 8px black;\n    display: none;\n}\n\n.show {\n    display:block;\n}\n\n.hide {\n    display: none;\n}\n\n.instr-btn {\n    width: 200px;\n    padding: 5px;\n    font-size: 16px;\n    background-color: rgb(175, 242, 80);\n    transition: background-color 0.25s;\n}\n\n.instr-btn:hover {\n    cursor: pointer;\n    background-color: rgb(122, 210, 0);\n}\n\n#remove-instr {\n    top: 130px;\n}\n\n#attr-instr {\n    left: 160px;\n    top: -15px;\n}\n\n#hover-instr {\n    top: 100px;\n    left: 375px;\n}\n\n.beer-list-instr {\n    left: 40px;\n    top: 235px;\n}", "",{"version":3,"sources":["webpack://src/styles/instructions.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,uBAAuB;IACvB,mCAAmC;IACnC,gBAAgB;IAChB,kBAAkB;IAClB,YAAY;IACZ,UAAU;IACV,8BAA8B;IAC9B,aAAa;AACjB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,YAAY;IACZ,YAAY;IACZ,eAAe;IACf,mCAAmC;IACnC,kCAAkC;AACtC;;AAEA;IACI,eAAe;IACf,kCAAkC;AACtC;;AAEA;IACI,UAAU;AACd;;AAEA;IACI,WAAW;IACX,UAAU;AACd;;AAEA;IACI,UAAU;IACV,WAAW;AACf;;AAEA;IACI,UAAU;IACV,UAAU;AACd","sourcesContent":[".instructions-container {\n    position: absolute;\n    border: 1px solid black;\n    background-color: rgb(245, 245, 98);\n    padding: 3px 5px;\n    border-radius: 5px;\n    width: 100px;\n    z-index: 5;\n    box-shadow: 5px 10px 8px black;\n    display: none;\n}\n\n.show {\n    display:block;\n}\n\n.hide {\n    display: none;\n}\n\n.instr-btn {\n    width: 200px;\n    padding: 5px;\n    font-size: 16px;\n    background-color: rgb(175, 242, 80);\n    transition: background-color 0.25s;\n}\n\n.instr-btn:hover {\n    cursor: pointer;\n    background-color: rgb(122, 210, 0);\n}\n\n#remove-instr {\n    top: 130px;\n}\n\n#attr-instr {\n    left: 160px;\n    top: -15px;\n}\n\n#hover-instr {\n    top: 100px;\n    left: 375px;\n}\n\n.beer-list-instr {\n    left: 40px;\n    top: 235px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".instructions-container {\n    position: absolute;\n    border: 1px solid black;\n    background-color: rgb(245, 245, 98);\n    padding: 3px 5px;\n    border-radius: 5px;\n    width: 100px;\n    z-index: 5;\n    box-shadow: 5px 10px 8px black;\n    display: none;\n}\n\n.instruction-div {\n  position: absolute;\n  top: 50px;\n  left: calc(50% + 200px);\n  animation: slowFadeIn 2.5s;\n}\n\n\n.show {\n    display:block;\n}\n\n.hide {\n    display: none;\n}\n\n.instr-btn {\n    width: 200px;\n    padding: 5px;\n    font-size: 16px;\n    background-color: rgb(238, 186, 108);\n    border-radius: 5px;\n    transition: background-color 0.25s;\n}\n\n.instr-btn:hover {\n    cursor: pointer;\n    background-color: rgb(222, 133, 0);\n}\n\n#remove-instr {\n  bottom: 60px;\n}\n\n#attr-instr {\n    left: 160px;\n    top: -15px;\n}\n\n#hover-instr {\n    top: 100px;\n    left: 375px;\n}\n\n.beer-list-instr {\n    left: -120px;\n    bottom: -25px;\n}", "",{"version":3,"sources":["webpack://src/styles/instructions.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,uBAAuB;IACvB,mCAAmC;IACnC,gBAAgB;IAChB,kBAAkB;IAClB,YAAY;IACZ,UAAU;IACV,8BAA8B;IAC9B,aAAa;AACjB;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,uBAAuB;EACvB,0BAA0B;AAC5B;;;AAGA;IACI,aAAa;AACjB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,YAAY;IACZ,YAAY;IACZ,eAAe;IACf,oCAAoC;IACpC,kBAAkB;IAClB,kCAAkC;AACtC;;AAEA;IACI,eAAe;IACf,kCAAkC;AACtC;;AAEA;EACE,YAAY;AACd;;AAEA;IACI,WAAW;IACX,UAAU;AACd;;AAEA;IACI,UAAU;IACV,WAAW;AACf;;AAEA;IACI,YAAY;IACZ,aAAa;AACjB","sourcesContent":[".instructions-container {\n    position: absolute;\n    border: 1px solid black;\n    background-color: rgb(245, 245, 98);\n    padding: 3px 5px;\n    border-radius: 5px;\n    width: 100px;\n    z-index: 5;\n    box-shadow: 5px 10px 8px black;\n    display: none;\n}\n\n.instruction-div {\n  position: absolute;\n  top: 50px;\n  left: calc(50% + 200px);\n  animation: slowFadeIn 2.5s;\n}\n\n\n.show {\n    display:block;\n}\n\n.hide {\n    display: none;\n}\n\n.instr-btn {\n    width: 200px;\n    padding: 5px;\n    font-size: 16px;\n    background-color: rgb(238, 186, 108);\n    border-radius: 5px;\n    transition: background-color 0.25s;\n}\n\n.instr-btn:hover {\n    cursor: pointer;\n    background-color: rgb(222, 133, 0);\n}\n\n#remove-instr {\n  bottom: 60px;\n}\n\n#attr-instr {\n    left: 160px;\n    top: -15px;\n}\n\n#hover-instr {\n    top: 100px;\n    left: 375px;\n}\n\n.beer-list-instr {\n    left: -120px;\n    bottom: -25px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -129,7 +129,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_images_beer_table_jpg__WEBPACK_IMPORTED_MODULE_2__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "body {\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n    background-size: cover;\n}\n\n.bbb {\n    margin: auto;\n    width: 300px;\n    background-color: rgb(240, 240, 240);\n    padding: 5px 0px;\n    text-align: center;\n    font-size: 32px;\n    border-radius: 10px;\n}\n\n.graph-background {\n    width: 90%;\n    padding: 25px 0px;\n    /* margin: 10px auto; */\n    margin-left: 10%;\n    background-color: transparent;\n    border-radius: 20px;\n    animation: slowFadeIn 2.5s;\n}\n\n.beer-info {\n    display: flex;\n}\n\n.graph {\n    position: relative;\n    background-color: rgb(240, 240, 240);\n    padding: 0px 20px;\n    margin-left: 25px;\n    display: flex;\n    flex-direction: column;\n    border-radius: 10px;\n    opacity: 1;\n}\n\n#beer-drpdwn {\n    width: 20%;\n    padding: 5px 10px;\n    position: relative;\n    /* top: -35px; */\n    top: 45px;\n}\n\n#beer-drpdwn:hover {\n    cursor: pointer;\n}\n\n#beer-list {\n    list-style-type: none;\n    padding-left: 0;\n    position: relative;\n}\n\n#beer-btn {\n    position: relative;\n}\n\n.aside-box {\n    height: fit-content;\n    padding: 5px 15px 15px;\n    border-radius: 5px;\n    margin-bottom: 30px;\n    width: 225px;\n}\n\n#description {\n    padding-top: 10px;\n    background-color: rgb(240, 240, 240);\n    line-height: 22px;\n}\n\n.desc-title, .desc-range {\n    font-weight: 700;\n}\n\n.desc-title {\n    font-size: 20px;\n}\n\n.beer-list-wrapper {\n    background-color: rgb(228, 198, 159);\n}\n\n.graph-title {\n    font-size: 28px;\n    font-weight: 700;\n}\n\n.axis-label {\n    font-size: 24px;\n    font-weight: 700;\n}\n\n.x-axis-value {\n    font-size: 12px;\n}\n\n.fa-minus-circle {\n    padding-right: 10px;\n    color: black;\n    transition: color 0.25s;\n}\n\n.fa-minus-circle:hover {\n    cursor: pointer;\n    color: red;\n}\n\n.beer-item {\n    font-size: 16px;\n    opacity: 0;\n    animation: fadeIn 1s 1;\n    animation-fill-mode: forwards;\n}\n\n.delete-beer {\n    opacity: 1;\n    animation: fadeOut 1s 1;\n}\n\n\n@keyframes fadeIn {\n    0% { opacity: 0.0; }\n    100% { opacity: 1.0; }\n}\n\n@keyframes fadeOut {\n    0% { opacity: 1.0; }\n    100% { opacity: 0.0; }\n}\n\n@keyframes slowFadeIn {\n    0% { opacity: 0 }\n    35% { opacity: 0 }\n    100% { opacity: 1 }\n}\n\n", "",{"version":3,"sources":["webpack://src/styles/main.css"],"names":[],"mappings":"AAAA;IACI,yDAAiD;IACjD,4BAA4B;IAC5B,4BAA4B;IAC5B,sBAAsB;AAC1B;;AAEA;IACI,YAAY;IACZ,YAAY;IACZ,oCAAoC;IACpC,gBAAgB;IAChB,kBAAkB;IAClB,eAAe;IACf,mBAAmB;AACvB;;AAEA;IACI,UAAU;IACV,iBAAiB;IACjB,uBAAuB;IACvB,gBAAgB;IAChB,6BAA6B;IAC7B,mBAAmB;IACnB,0BAA0B;AAC9B;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,oCAAoC;IACpC,iBAAiB;IACjB,iBAAiB;IACjB,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,UAAU;AACd;;AAEA;IACI,UAAU;IACV,iBAAiB;IACjB,kBAAkB;IAClB,gBAAgB;IAChB,SAAS;AACb;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,qBAAqB;IACrB,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,mBAAmB;IACnB,sBAAsB;IACtB,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;AAChB;;AAEA;IACI,iBAAiB;IACjB,oCAAoC;IACpC,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,oCAAoC;AACxC;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,mBAAmB;IACnB,YAAY;IACZ,uBAAuB;AAC3B;;AAEA;IACI,eAAe;IACf,UAAU;AACd;;AAEA;IACI,eAAe;IACf,UAAU;IACV,sBAAsB;IACtB,6BAA6B;AACjC;;AAEA;IACI,UAAU;IACV,uBAAuB;AAC3B;;;AAGA;IACI,KAAK,YAAY,EAAE;IACnB,OAAO,YAAY,EAAE;AACzB;;AAEA;IACI,KAAK,YAAY,EAAE;IACnB,OAAO,YAAY,EAAE;AACzB;;AAEA;IACI,KAAK,WAAW;IAChB,MAAM,WAAW;IACjB,OAAO,WAAW;AACtB","sourcesContent":["body {\n    background-image: url('../images/beer-table.jpg');\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n    background-size: cover;\n}\n\n.bbb {\n    margin: auto;\n    width: 300px;\n    background-color: rgb(240, 240, 240);\n    padding: 5px 0px;\n    text-align: center;\n    font-size: 32px;\n    border-radius: 10px;\n}\n\n.graph-background {\n    width: 90%;\n    padding: 25px 0px;\n    /* margin: 10px auto; */\n    margin-left: 10%;\n    background-color: transparent;\n    border-radius: 20px;\n    animation: slowFadeIn 2.5s;\n}\n\n.beer-info {\n    display: flex;\n}\n\n.graph {\n    position: relative;\n    background-color: rgb(240, 240, 240);\n    padding: 0px 20px;\n    margin-left: 25px;\n    display: flex;\n    flex-direction: column;\n    border-radius: 10px;\n    opacity: 1;\n}\n\n#beer-drpdwn {\n    width: 20%;\n    padding: 5px 10px;\n    position: relative;\n    /* top: -35px; */\n    top: 45px;\n}\n\n#beer-drpdwn:hover {\n    cursor: pointer;\n}\n\n#beer-list {\n    list-style-type: none;\n    padding-left: 0;\n    position: relative;\n}\n\n#beer-btn {\n    position: relative;\n}\n\n.aside-box {\n    height: fit-content;\n    padding: 5px 15px 15px;\n    border-radius: 5px;\n    margin-bottom: 30px;\n    width: 225px;\n}\n\n#description {\n    padding-top: 10px;\n    background-color: rgb(240, 240, 240);\n    line-height: 22px;\n}\n\n.desc-title, .desc-range {\n    font-weight: 700;\n}\n\n.desc-title {\n    font-size: 20px;\n}\n\n.beer-list-wrapper {\n    background-color: rgb(228, 198, 159);\n}\n\n.graph-title {\n    font-size: 28px;\n    font-weight: 700;\n}\n\n.axis-label {\n    font-size: 24px;\n    font-weight: 700;\n}\n\n.x-axis-value {\n    font-size: 12px;\n}\n\n.fa-minus-circle {\n    padding-right: 10px;\n    color: black;\n    transition: color 0.25s;\n}\n\n.fa-minus-circle:hover {\n    cursor: pointer;\n    color: red;\n}\n\n.beer-item {\n    font-size: 16px;\n    opacity: 0;\n    animation: fadeIn 1s 1;\n    animation-fill-mode: forwards;\n}\n\n.delete-beer {\n    opacity: 1;\n    animation: fadeOut 1s 1;\n}\n\n\n@keyframes fadeIn {\n    0% { opacity: 0.0; }\n    100% { opacity: 1.0; }\n}\n\n@keyframes fadeOut {\n    0% { opacity: 1.0; }\n    100% { opacity: 0.0; }\n}\n\n@keyframes slowFadeIn {\n    0% { opacity: 0 }\n    35% { opacity: 0 }\n    100% { opacity: 1 }\n}\n\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "body {\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n    background-size: cover;\n}\n\n.box {\n  box-shadow: 7px 7px 6px #4b4b4b;\n}\n\n.bbb {\n  position: relative;\n    margin: auto;\n    width: 300px;\n    background-color: rgb(249, 207, 71);\n    padding: 5px 0px;\n    text-align: center;\n    font-size: 32px;\n    border-radius: 10px;\n    margin-top: 40px;\n}\n.graph-background {\n    width: 90%;\n    padding: 25px 0px;\n    /* margin: 10px auto; */\n    /* margin-left: 10%;\n     */\n    margin: auto;\n    background-color: transparent;\n    border-radius: 20px;\n    animation: slowFadeIn 2.5s;\n}\n\n.beer-info {\n    display: flex;\n    justify-content: center;\n}\n\nselect {\n    background-color: #ffdf2b;\n}\n\n.graph {\n    position: relative;\n    background-color: #ebe1a7;\n    padding: 0px 20px;\n    margin-left: 25px;\n    display: flex;\n    flex-direction: column;\n    border-radius: 10px;\n    opacity: 1;\n    height: 535px;\n    max-height: 535px;\n}\n\n#beer-drpdwn {\n    width: 20%;\n    padding: 5px 10px;\n    position: relative;\n    /* top: -35px; */\n    top: 45px;\n}\n\n#beer-drpdwn:hover {\n    cursor: pointer;\n}\n\n.beer-list-wrapper {\n    background-color: rgb(228, 198, 159);\n}\n\n#beer-list-title {\n  margin-top: 5px;\n}\n\n#beer-list {\n  list-style-type: none;\n  padding-left: 0;\n  position: relative;\n  max-height: 200px;\n  overflow-y: auto;\n  scrollbar-color: black white;\n}\n\n.beer-item {\n  font-size: 16px;\n  text-indent: -0.8em;\n  margin-left: 2em;\n  opacity: 0;\n  animation: fadeIn 1s 1;\n  animation-fill-mode: forwards;\n}\n\n.new-beer {\n  text-indent: -0.8em;\n  margin-left: 2em;\n}\n\n#beer-btn {\n    position: relative;\n}\n\n.aside-box {\n  position: relative;\n    height: fit-content;\n    padding: 5px 15px 15px;\n    border-radius: 5px;\n    margin-bottom: 30px;\n    width: 225px;\n}\n\n#description {\n    padding-top: 10px;\n    background-color: rgb(220, 182, 29);\n    line-height: 22px;\n}\n\n.desc-title, .desc-range {\n    font-weight: 700;\n}\n\n.desc-title {\n    font-size: 20px;\n}\n\n.graph-title {\n    font-size: 28px;\n    font-weight: 700;\n}\n\n.axis-label {\n    font-size: 24px;\n    font-weight: 700;\n}\n\n.x-axis-value {\n    font-size: 12px;\n}\n\n.fa-minus-circle {\n    padding-right: 10px;\n    color: black;\n    transition: color 0.25s;\n}\n\n.fa-minus-circle:hover {\n    cursor: pointer;\n    color: red;\n}\n\n/* .beer-item span::first-line {\n  margin-left: -10px;\n} */\n\n.delete-beer {\n    opacity: 1;\n    animation: fadeOut 1s 1;\n}\n\n.about-links {\n    position: absolute;\n    bottom: -56px;\n    right: 0px;\n    padding: 10px 15px;\n    background-color: rgb(230, 204, 58);\n    border-radius: 10px;\n}\n\n.about-links a {\n    text-decoration: none;\n}\n\n.about-links .fab {\n    color: black;\n    font-size: 28px;\n    opacity: 1;\n    transition: opacity 0.2s;\n}\n\n.about-links .fab:hover {\n  opacity: 0.5;\n}\n\n.about-links .fab:last-child {\n  margin-left: 5px;\n}\n\n\n\n@keyframes fadeIn {\n    0% { opacity: 0.0; }\n    100% { opacity: 1.0; }\n}\n\n@keyframes fadeOut {\n    0% { opacity: 1.0; }\n    100% { opacity: 0.0; }\n}\n\n@keyframes slowFadeIn {\n    0% { opacity: 0 }\n    35% { opacity: 0 }\n    100% { opacity: 1 }\n}\n", "",{"version":3,"sources":["webpack://src/styles/main.css"],"names":[],"mappings":"AAAA;IACI,yDAAiD;IACjD,4BAA4B;IAC5B,4BAA4B;IAC5B,sBAAsB;AAC1B;;AAEA;EACE,+BAA+B;AACjC;;AAEA;EACE,kBAAkB;IAChB,YAAY;IACZ,YAAY;IACZ,mCAAmC;IACnC,gBAAgB;IAChB,kBAAkB;IAClB,eAAe;IACf,mBAAmB;IACnB,gBAAgB;AACpB;AACA;IACI,UAAU;IACV,iBAAiB;IACjB,uBAAuB;IACvB;MACE;IACF,YAAY;IACZ,6BAA6B;IAC7B,mBAAmB;IACnB,0BAA0B;AAC9B;;AAEA;IACI,aAAa;IACb,uBAAuB;AAC3B;;AAEA;IACI,yBAAyB;AAC7B;;AAEA;IACI,kBAAkB;IAClB,yBAAyB;IACzB,iBAAiB;IACjB,iBAAiB;IACjB,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,UAAU;IACV,aAAa;IACb,iBAAiB;AACrB;;AAEA;IACI,UAAU;IACV,iBAAiB;IACjB,kBAAkB;IAClB,gBAAgB;IAChB,SAAS;AACb;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,oCAAoC;AACxC;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,qBAAqB;EACrB,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,gBAAgB;EAChB,4BAA4B;AAC9B;;AAEA;EACE,eAAe;EACf,mBAAmB;EACnB,gBAAgB;EAChB,UAAU;EACV,sBAAsB;EACtB,6BAA6B;AAC/B;;AAEA;EACE,mBAAmB;EACnB,gBAAgB;AAClB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;EACE,kBAAkB;IAChB,mBAAmB;IACnB,sBAAsB;IACtB,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;AAChB;;AAEA;IACI,iBAAiB;IACjB,mCAAmC;IACnC,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,mBAAmB;IACnB,YAAY;IACZ,uBAAuB;AAC3B;;AAEA;IACI,eAAe;IACf,UAAU;AACd;;AAEA;;GAEG;;AAEH;IACI,UAAU;IACV,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,aAAa;IACb,UAAU;IACV,kBAAkB;IAClB,mCAAmC;IACnC,mBAAmB;AACvB;;AAEA;IACI,qBAAqB;AACzB;;AAEA;IACI,YAAY;IACZ,eAAe;IACf,UAAU;IACV,wBAAwB;AAC5B;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,gBAAgB;AAClB;;;;AAIA;IACI,KAAK,YAAY,EAAE;IACnB,OAAO,YAAY,EAAE;AACzB;;AAEA;IACI,KAAK,YAAY,EAAE;IACnB,OAAO,YAAY,EAAE;AACzB;;AAEA;IACI,KAAK,WAAW;IAChB,MAAM,WAAW;IACjB,OAAO,WAAW;AACtB","sourcesContent":["body {\n    background-image: url('../images/beer-table.jpg');\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n    background-size: cover;\n}\n\n.box {\n  box-shadow: 7px 7px 6px #4b4b4b;\n}\n\n.bbb {\n  position: relative;\n    margin: auto;\n    width: 300px;\n    background-color: rgb(249, 207, 71);\n    padding: 5px 0px;\n    text-align: center;\n    font-size: 32px;\n    border-radius: 10px;\n    margin-top: 40px;\n}\n.graph-background {\n    width: 90%;\n    padding: 25px 0px;\n    /* margin: 10px auto; */\n    /* margin-left: 10%;\n     */\n    margin: auto;\n    background-color: transparent;\n    border-radius: 20px;\n    animation: slowFadeIn 2.5s;\n}\n\n.beer-info {\n    display: flex;\n    justify-content: center;\n}\n\nselect {\n    background-color: #ffdf2b;\n}\n\n.graph {\n    position: relative;\n    background-color: #ebe1a7;\n    padding: 0px 20px;\n    margin-left: 25px;\n    display: flex;\n    flex-direction: column;\n    border-radius: 10px;\n    opacity: 1;\n    height: 535px;\n    max-height: 535px;\n}\n\n#beer-drpdwn {\n    width: 20%;\n    padding: 5px 10px;\n    position: relative;\n    /* top: -35px; */\n    top: 45px;\n}\n\n#beer-drpdwn:hover {\n    cursor: pointer;\n}\n\n.beer-list-wrapper {\n    background-color: rgb(228, 198, 159);\n}\n\n#beer-list-title {\n  margin-top: 5px;\n}\n\n#beer-list {\n  list-style-type: none;\n  padding-left: 0;\n  position: relative;\n  max-height: 200px;\n  overflow-y: auto;\n  scrollbar-color: black white;\n}\n\n.beer-item {\n  font-size: 16px;\n  text-indent: -0.8em;\n  margin-left: 2em;\n  opacity: 0;\n  animation: fadeIn 1s 1;\n  animation-fill-mode: forwards;\n}\n\n.new-beer {\n  text-indent: -0.8em;\n  margin-left: 2em;\n}\n\n#beer-btn {\n    position: relative;\n}\n\n.aside-box {\n  position: relative;\n    height: fit-content;\n    padding: 5px 15px 15px;\n    border-radius: 5px;\n    margin-bottom: 30px;\n    width: 225px;\n}\n\n#description {\n    padding-top: 10px;\n    background-color: rgb(220, 182, 29);\n    line-height: 22px;\n}\n\n.desc-title, .desc-range {\n    font-weight: 700;\n}\n\n.desc-title {\n    font-size: 20px;\n}\n\n.graph-title {\n    font-size: 28px;\n    font-weight: 700;\n}\n\n.axis-label {\n    font-size: 24px;\n    font-weight: 700;\n}\n\n.x-axis-value {\n    font-size: 12px;\n}\n\n.fa-minus-circle {\n    padding-right: 10px;\n    color: black;\n    transition: color 0.25s;\n}\n\n.fa-minus-circle:hover {\n    cursor: pointer;\n    color: red;\n}\n\n/* .beer-item span::first-line {\n  margin-left: -10px;\n} */\n\n.delete-beer {\n    opacity: 1;\n    animation: fadeOut 1s 1;\n}\n\n.about-links {\n    position: absolute;\n    bottom: -56px;\n    right: 0px;\n    padding: 10px 15px;\n    background-color: rgb(230, 204, 58);\n    border-radius: 10px;\n}\n\n.about-links a {\n    text-decoration: none;\n}\n\n.about-links .fab {\n    color: black;\n    font-size: 28px;\n    opacity: 1;\n    transition: opacity 0.2s;\n}\n\n.about-links .fab:hover {\n  opacity: 0.5;\n}\n\n.about-links .fab:last-child {\n  margin-left: 5px;\n}\n\n\n\n@keyframes fadeIn {\n    0% { opacity: 0.0; }\n    100% { opacity: 1.0; }\n}\n\n@keyframes fadeOut {\n    0% { opacity: 1.0; }\n    100% { opacity: 0.0; }\n}\n\n@keyframes slowFadeIn {\n    0% { opacity: 0 }\n    35% { opacity: 0 }\n    100% { opacity: 1 }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -31471,9 +31471,10 @@ var TOOLTIP_WIDTH_OFFSET = 10;
 var UPDATE_TRANSITION_TIME = 1000;
 var X_LABEL_HEIGHT_OFFSET = 120;
 var MAX_BEER_NAME_LENGTH = 12;
-var prevAttrs = 'abv';
+var MAX_NUM_DISPLAYED_BEERS = 12;
+var prevAttrs = "abv";
 var BEER_API_URL = "https://sandbox-api.brewerydb.com/v2/";
-var PROXY_URL = "https://radiant-sea-31078.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
+var PROXY_URL = "https://murmuring-oasis-36162.herokuapp.com/"; // Adds Acces-Control-Allow-Origin header to the request
 
 /**
  * Creates the beer bar graph
@@ -31483,40 +31484,43 @@ document.addEventListener("DOMContentLoaded", function () {
   var margin = 60;
   var width = 650 - 2 * margin;
   var height = 500 - 3.5 * margin;
-  var beerSvg = d3__WEBPACK_IMPORTED_MODULE_4__["select"]("#beer-bar").attr("height", height + margin * 3.5).attr("width", width + margin * 2).attr("x", 100).append('g').attr('transform', "translate(".concat(margin, ", ").concat(margin, ")")); // initial beers
+  var beerSvg = d3__WEBPACK_IMPORTED_MODULE_4__["select"]("#beer-bar").attr("height", height + margin * 3.5).attr("width", width + margin * 2).attr("max-height", width + margin * 2).attr("x", 100).append("g").attr("transform", "translate(".concat(margin, ", ").concat(margin, ")")); // initial beers
 
-  var beers = Object.values(__webpack_require__(/*! ./beers.json */ "./src/beers.json")).sort(alphabeticalBeers); // Y-axis scale 
+  var beers = Object.values(__webpack_require__(/*! ./beers.json */ "./src/beers.json")).sort(alphabeticalBeers); // Y-axis scale
 
   var yScale = d3__WEBPACK_IMPORTED_MODULE_4__["scaleLinear"]().range([height, 0]).domain([0, 100]);
-  var yAxis = beerSvg.append('g').call(d3__WEBPACK_IMPORTED_MODULE_4__["axisLeft"](yScale)); // x-axis scale for beer names
+  var yAxis = beerSvg.append("g").call(d3__WEBPACK_IMPORTED_MODULE_4__["axisLeft"](yScale)); // x-axis scale for beer names
 
   var xScale = d3__WEBPACK_IMPORTED_MODULE_4__["scaleBand"]().range([0, width]).domain(beers.map(function (beer) {
     return smallerBeerName(beer.name);
   })).padding(0.2);
-  var xAxis = beerSvg.append('g').attr('transform', "translate(0, ".concat(height, ")")).call(d3__WEBPACK_IMPORTED_MODULE_4__["axisBottom"](xScale)); // horizontal lines across graph
+  var xAxis = beerSvg.append("g").attr("transform", "translate(0, ".concat(height, ")")).call(d3__WEBPACK_IMPORTED_MODULE_4__["axisBottom"](xScale)); // horizontal lines across graph
 
-  var horizLines = beerSvg.append("g").attr("class", "grid").style("color", "lightgray").call(d3__WEBPACK_IMPORTED_MODULE_4__["axisLeft"]().scale(yScale).tickSize(-width, 0, 0).tickFormat("")); // Tooltip to follow cursor on hover
+  var horizLines = beerSvg.append("g").attr("class", "grid").style("color", "	#505050").call(d3__WEBPACK_IMPORTED_MODULE_4__["axisLeft"]().scale(yScale).tickSize(-width, 0, 0).tickFormat("")); // Tooltip to follow cursor on hover
 
   var tooltip = d3__WEBPACK_IMPORTED_MODULE_4__["select"]("body").append("div").attr("class", "tooltip").style("position", "absolute").style("background", "burlywood").style("padding", "10px").style("border-radius", "5px").style("opacity", 0); // x-axis label
 
   var xLabel = beerSvg.append("text").attr("x", width / 2).attr("y", height + X_LABEL_HEIGHT_OFFSET).attr("text-anchor", "middle").attr("class", "axis-label").text("Beer Names"); // Title of graph
 
-  var graphTitle = beerSvg.append("text").attr("x", width / 2).attr("y", -20).attr("class", "graph-title").attr("text-anchor", "middle").text('ABV of Different Beers');
+  var graphTitle = beerSvg.append("text").attr("x", width / 2).attr("y", -20).attr("class", "graph-title").attr("text-anchor", "middle").text("ABV of Different Beers");
   /**
-   * 
+   *
    * @param {object} attrs
    *      Pass in an object from BEER_ATTRS to update the data
-   *      e.g. updateBeerBarChart(BEER_ATTRS.abv) 
+   *      e.g. updateBeerBarChart(BEER_ATTRS.abv)
    */
 
   var updateBeerBarChart = function updateBeerBarChart() {
     var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : prevAttrs;
     var beers = Object.values(__webpack_require__(/*! ./beers.json */ "./src/beers.json")).sort(alphabeticalBeers);
-    prevAttrs = attrs;
+    prevAttrs = attrs; // Limit the number of beers on screen, disable the beer button at this limit
+
+    var beerBtn = document.getElementById("beer-btn");
+    beerBtn.disabled = beers.length >= MAX_NUM_DISPLAYED_BEERS;
     xScale.domain(beers.map(function (beer) {
       return smallerBeerName(beer.name);
     })).padding(0.2);
-    xAxis.call(d3__WEBPACK_IMPORTED_MODULE_4__["axisBottom"](xScale)).selectAll("text").style("text-anchor", "start").attr("class", "x-axis-value").attr("class", "new-beer").attr("dx", "5px").attr('transform', function () {
+    xAxis.call(d3__WEBPACK_IMPORTED_MODULE_4__["axisBottom"](xScale)).selectAll("text").style("text-anchor", "start").attr("class", "x-axis-value").attr("class", "new-beer").attr("dx", "5px").attr("transform", function () {
       return "rotate(45)";
     }); // Update y-axis
 
@@ -31544,7 +31548,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 /**
  * Reduce the length of a beer name
- * @param {string} beerName 
+ * @param {string} beerName
  */
 
 var smallerBeerName = function smallerBeerName(beerName) {
@@ -31556,43 +31560,39 @@ var smallerBeerName = function smallerBeerName(beerName) {
 };
 /**
  * Adds bars to the bar graph that calls this function
- * @param {d3 object} bars 
- * @param {object} newAttrs 
- * @param {d3 scale} xScale 
- * @param {d3 scale} yScale 
- * @param {number} height 
- * @param {html element} tooltip 
+ * @param {d3 object} bars
+ * @param {object} newAttrs
+ * @param {d3 scale} xScale
+ * @param {d3 scale} yScale
+ * @param {number} height
+ * @param {html element} tooltip
  */
 
 
 var addBars = function addBars(bars, newAttrs, xScale, yScale, height, tooltip) {
   // mouse events to append to bars
   function _onMouseOverEvent(d3event, beer) {
-    d3__WEBPACK_IMPORTED_MODULE_4__["select"](this).transition('mouseover').duration(250).attr("opacity", 0.7);
-    tooltip.style('opacity', .9);
+    d3__WEBPACK_IMPORTED_MODULE_4__["select"](this).transition("mouseover").duration(250).attr("opacity", 0.7);
+    tooltip.style("opacity", 0.9);
     var ttX = d3event.pageX + TOOLTIP_WIDTH_OFFSET + "px";
     var ttY = d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px";
     tooltip.html(beer.name + "<br/>" + getBeerValue(beer, newAttrs.beerValue) + newAttrs.beerValueSymbol).style("left", ttX).style("top", ttY);
   }
-
-  ;
 
   function _onMouseMoveEvent(d3event, beer) {
     var prefix = newAttrs.beerPrefix || "";
     tooltip.html(beer.name + "<br/>" + prefix + getBeerValue(beer, newAttrs.beerValue) + newAttrs.beerValueSymbol).style("left", d3event.pageX + TOOLTIP_WIDTH_OFFSET + "px").style("top", d3event.pageY - TOOLTIP_HEIGHT_OFFSET + "px");
   }
 
-  ;
-
   function _onMouseLeaveEvent(d3event, beer) {
-    d3__WEBPACK_IMPORTED_MODULE_4__["select"](this).transition('mouseleave').duration(300).attr("opacity", 1); // reset tooltip, move it away to hover over rects again
+    d3__WEBPACK_IMPORTED_MODULE_4__["select"](this).transition("mouseleave").duration(300).attr("opacity", 1); // reset tooltip, move it away to hover over rects again
 
     tooltip.style("opacity", 0).style("left", 0).style("top", 0);
   } // Setup the bars on screen
 
 
   bars.enter().append("rect") // Tooltip to show up, and dims the hovered bar
-  .merge(bars).on('mouseover', _onMouseOverEvent).on('mousemove', _onMouseMoveEvent).on('mouseleave', _onMouseLeaveEvent).transition().duration(UPDATE_TRANSITION_TIME).attr("x", function (beer) {
+  .merge(bars).on("mouseover", _onMouseOverEvent).on("mousemove", _onMouseMoveEvent).on("mouseleave", _onMouseLeaveEvent).transition().duration(UPDATE_TRANSITION_TIME).attr("x", function (beer) {
     return xScale(smallerBeerName(beer.name));
   }).attr("y", function (beer) {
     var beerValue = getBeerValue(beer, newAttrs.beerValue);
@@ -31605,7 +31605,7 @@ var addBars = function addBars(bars, newAttrs, xScale, yScale, height, tooltip) 
 };
 /**
  * Setup elements on the page
- * @param {function} updateBeerBarChart 
+ * @param {function} updateBeerBarChart
  */
 
 
@@ -31616,8 +31616,8 @@ var initialize = function initialize(updateBeerBarChart) {
   updateBeerBarChart(_beerAttrs__WEBPACK_IMPORTED_MODULE_5__["BEER_ATTRS"].abv);
 };
 /**
- * Initialize dropdown element 
- * @param {function} updateBeerBarChart 
+ * Initialize dropdown element
+ * @param {function} updateBeerBarChart
  */
 
 
@@ -31644,10 +31644,10 @@ var initInstructions = function initInstructions() {
     var instructions = document.getElementsByClassName("instructions-container");
 
     for (var i = 0; i < instructions.length; i++) {
-      instructions[i].className += ' show';
+      instructions[i].className += " show";
     }
 
-    instructionsBtn.className += ' hide';
+    instructionsBtn.className += " hide";
     hideInstrBtn.classList.remove("hide");
   });
   hideInstrBtn.addEventListener("click", function () {
@@ -31665,8 +31665,8 @@ var initInstructions = function initInstructions() {
  * Not all beers have a direct value (beer.abv, beer.ibu)
  * This checks if there is a direct value
  * If not, we can find the min and max within beer.style
- * 
- * @param {object} beer 
+ *
+ * @param {object} beer
  * @param {string} field
  *      values like 'ibu', 'abv', 'srm'
  */
@@ -31674,15 +31674,15 @@ var initInstructions = function initInstructions() {
 
 var getBeerValue = function getBeerValue(beer, field) {
   if (beer[field]) {
-    if (_typeof(beer[field]) === 'object') {
+    if (_typeof(beer[field]) === "object") {
       return parseFloat(beer[field].id); // SRMs might come as an object
     }
 
     return parseFloat(beer[field]);
   } else if (beer.style) {
     // Min/Max vals are packaged inside beer.style
-    var min = field + 'Min',
-        max = field + 'Max';
+    var min = field + "Min",
+        max = field + "Max";
     var minVal = parseFloat(beer.style[min]),
         maxVal = parseFloat(beer.style[max]); // value may not exist, return 0 if so
 
@@ -31693,8 +31693,8 @@ var getBeerValue = function getBeerValue(beer, field) {
 };
 /**
  * Sort beers by name
- * @param {beer object} a 
- * @param {beer object} b 
+ * @param {beer object} a
+ * @param {beer object} b
  */
 
 
